@@ -11,21 +11,6 @@ Globals:
     MemorySize: 128
 
 Resources:
-  HelloWorldFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: api/
-      Handler: lib/hello-world/hello-world.handler
-      Runtime: nodejs16.x
-      Architectures:
-        - x86_64
-      Events:
-        HelloWorld:
-          Type: Api
-          Properties:
-            Path: /hello-world
-            Method: get
-
   LicenseDeployFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -38,16 +23,5 @@ Resources:
         LicenseDeploy:
           Type: Api
           Properties:
-            Path: /deploy
+            Path: /deploy/{id}
             Method: post
-
-Outputs:
-  HelloWorldApi:
-    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
-  HelloWorldFunction:
-    Description: "Hello World Lambda Function ARN"
-    Value: !GetAtt HelloWorldFunction.Arn
-  HelloWorldFunctionIamRole:
-    Description: "Implicit IAM Role created for Hello World function"
-    Value: !GetAtt HelloWorldFunctionRole.Arn
