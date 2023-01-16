@@ -77,6 +77,11 @@ print_title "Creating $s3_bucket in $region"
 
 create_s3_bucket_if_not_exist $s3_bucket
 
+pushd ./management-system-api/api/
+npm install
+npm run build
+popd
+
 sam package --template-file $template_1 --region $region --s3-bucket $s3_bucket --output-template-file $template_2
 print_title "management-system-api packages are published to $s3_bucket for $region"
 
