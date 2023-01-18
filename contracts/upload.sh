@@ -18,7 +18,7 @@ function print_warning() {
 
 function help() {
         self=$(basename $0)
-        print_title "P8 smart contract complie & upload script"
+        print_title "smart contract complie & upload script"
         echo ""
         echo "upload.sh <AWS-region> <filename>"
         echo
@@ -40,7 +40,7 @@ function create_s3_bucket_if_not_exist() {
                 aws s3api create-bucket --bucket ${bucket_name} --region ${region} --no-cli-pager >/dev/null || echo "bucket opetation failed"
                 aws s3api put-bucket-versioning --region ${region} --bucket ${bucket_name} --versioning-configuration Status=Enabled --no-cli-pager >/dev/null
                 sleep 2
-                aws s3api put-bucket-tagging --region ${region} --bucket ${bucket_name} --tagging 'TagSet=[{Key=CostCenter,Value=p8}]' --no-cli-pager >/dev/null
+                aws s3api put-bucket-tagging --region ${region} --bucket ${bucket_name} --no-cli-pager >/dev/null
                 sleep 2
 
                 aws s3api put-bucket-encryption \
