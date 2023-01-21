@@ -108,3 +108,26 @@ License represents a both license contract and end user license token or end use
 - `token` (object, optional) represents the subscription associated with the license.
   - `id` (number) is the subscription id within the contract.
   - `metadata` (object) is a JSON metadata for the subscriptino.
+
+## Software
+
+Software represents set of license related to one software.
+
+```
+{
+    "id": "bd7b7740-3f44-4238-a834-4606621b6ba6",
+    "category": "ART",
+    "name": "Microsoft Word 2016",
+    "description": "Microsoft Word 2016 software for document editing",
+    "image": "https://i0.wp.com/isoriver.com/wp-content/uploads/2019/11/word-2016.jpg?w=920&ssl=1",
+    "owner": "a0310c2a-ca87-421e-9235-dfadf323b412",
+}
+```
+
+- `id` (uuidv4, immutable) is the unique identifier of the software.
+- `category` (string, enum) is the category of the software. Possible values are;
+  - SYSTEM - System Software
+  - APPLICTION - Application Software
+- `name` (string) is the name of the software.
+- `description` (string) is the description of the software.
+- `image` (string, url) is a URL containing an image representing the software.
