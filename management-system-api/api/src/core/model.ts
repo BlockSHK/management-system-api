@@ -5,11 +5,48 @@ export enum ErrorCode {
   CORRUPTED_DATA = "CORRUPTED_DATA",
 }
 
-export enum LicenseTypes {
+export enum ContractTypes {
   PERPETUAL = "PERPETUAL",
   SUBSCRIPTION = "SUBSCRIPTION",
 }
 
+export enum LicenseTypes {
+  CONTRACT_PERPETUAL = "CONTRACT_PERPETUAL",
+  CONTRACT_SUBSCRIPTION = "CONTRACT_SUBSCRIPTION",
+  TOKEN_PERPETUAL = "TOKEN_PERPETUAL",
+  TOKEN_SUBSCRIPTION = "TOKEN_SUBSCRIPTION",
+}
+
 export enum RejectCode {
   VALIDATION_ERROR = "VALIDATION_ERROR",
+}
+
+export enum LicenseStatus {
+  ACTIVE = "ACTIVE",
+  INACTIVE = "INACTIVE",
+}
+
+export namespace internal {
+  export interface DBQuery {
+    offset?: any;
+    limit?: number;
+  }
+
+  export interface License extends apiInput.LicenseInput {
+    id: string;
+    status: LicenseStatus;
+    owner: string;
+    contract?: any;
+    token?: any;
+  }
+}
+
+export namespace apiInput {
+  export interface LicenseInput {
+    software: string;
+    type: LicenseTypes;
+    name: string;
+    description: string;
+    image: string;
+  }
 }
