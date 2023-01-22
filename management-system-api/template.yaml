@@ -20,8 +20,55 @@ Resources:
       Architectures:
         - x86_64
       Events:
-        LicenseDeploy:
+        Contract:
           Type: Api
           Properties:
             Path: /deploy/{id}
             Method: post
+
+  LicenseCreateFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "blockshk-management-system-CreateLicenseHandler"
+      CodeUri: api/
+      Handler: lib/api-handlers/license/create.handler
+      Runtime: nodejs14.x
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref LicenseTable
+      Environment:
+        Variables:
+          LICENSE_TABLE_NAME: !Ref LicenseTable
+      Events:
+        Contract:
+          Type: Api
+          Properties:
+            Path: /create
+            Method: post
+
+  LicenseTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "id"
+          AttributeType: "S"
+        - AttributeName: "software"
+          AttributeType: "S"
+
+      KeySchema:
+        - AttributeName: "id"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      GlobalSecondaryIndexes:
+        - IndexName: software-index
+          KeySchema:
+            - AttributeName: "software"
+              KeyType: "HASH"
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
+      TableName: !Sub "blockshk-management-system-license"
