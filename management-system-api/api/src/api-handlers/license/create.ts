@@ -1,15 +1,17 @@
-import { LicenseTypes, RejectCode } from "../../core/model";
-import { apiUtil } from "../../core/apiUtil";
-import { request, ValidationError } from "../../core/validation";
-import { LicenseAdapter } from "../../adapters/license";
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
+import { apiUtil } from "../../core/apiUtil";
+import { apiOutput, apiInput } from "../../core/model";
+import { LicenseAdapter } from "../../adapters/license";
+import { request, ValidationError } from "../../core/validation";
+
+const RejectCode = apiOutput.RejectCode;
 
 export const handler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-  let requestBody: any;
+  let requestBody: apiInput.LicenseInput;
   let response: any;
-  let licenseId: string;
+
   try {
     if (!event.body) {
       return apiUtil.get200BusinessReject(
@@ -19,32 +21,22 @@ export const handler = async (
       );
     }
 
-    if (event.pathParameters == null || event.pathParameters.id == null) {
-      return apiUtil.get200BusinessReject(
-        event.headers,
-        RejectCode.VALIDATION_ERROR,
-        "Invalid payload, license id is required"
-      );
-    }
-
-    licenseId = event.pathParameters.id!;
     requestBody = request.parseBody(event);
-
-    response = await LicenseAdapter.deploy();
+    response = await LicenseAdapter.create("requestUserId", requestBody);
     return apiUtil.get200(event.headers, response);
   } catch (error) {
     if (error instanceof ValidationError) {
       return apiUtil.get200BusinessReject(
         event.headers,
-        RejectCode.VALIDATION_ERROR,
+        error.errorCode,
         error.message
       );
     }
 
-    console.error("Error during deploying license.", error);
+    console.error("Error during creating license.", error);
     return apiUtil.get500(
       event.headers,
-      `Error during deploying license ${error}`
+      `Error during creating license ${error}`
     );
   }
 };

@@ -50,3 +50,13 @@ export namespace apiInput {
     image: string;
   }
 }
+
+export namespace apiOutput {
+  export enum RejectCode {
+    VALIDATION_ERROR = "VALIDATION_ERROR",
+    ENTITY_NOT_FOUND = "ENTITY_NOT_FOUND",
+    CONTRACT_NOT_FOUND = "CONTRACT_NOT_FOUND",
+    WRONG_REQUEST_TYPE = "WRONG_REQUEST_TYPE",
+    AUTH_FAILURE = "AUTH_FAILURE",
+  }
+}
