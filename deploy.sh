@@ -53,6 +53,11 @@ if [[ $# != 1 ]]; then
         exit 0
 fi
 
+if [[ $1 == "-h" || $1 == "--help" ]]; then
+        help
+        exit 0
+fi
+
 region=$1
 
 if [[ -z $region ]]; then

@@ -84,9 +84,10 @@ License represents a both license contract and end user license token or end use
 - `id` (uuidv4, immutable) is a unique identifier for the license within the system.
 - `software` (uuidv4, optional) is the id of the software that the license belongs to.
 - `type` (string, enum) represents the type of the license. Possible values are;
-  - CONTRACT - license is a contract that can mint license or create subscription
-  - TOKEN - End User license token which minted
-  - SUBSCRIPTION - End User Subscription
+  - CONTRACT_PERPETUAL - license is a contract of perpetual license
+  - CONTRACT_SUBSCRIPTION - license is a contract to create subscription
+  - TOKEN_PERPETUAL - End User license token which minted
+  - TOKEN_SUBSCRIPTION - End User Subscription
 - `name` (string) is the name of the license.
 - `description` (string) is a description of the license.
 - `image` (string, url) is a URL that contains an image representing the license.
