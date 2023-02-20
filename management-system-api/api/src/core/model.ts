@@ -49,6 +49,10 @@ export namespace apiInput {
     description: string;
     image: string;
   }
+
+  export interface NonceRequest {
+    address: string;
+  }
 }
 
 export namespace apiOutput {
@@ -58,5 +62,11 @@ export namespace apiOutput {
     CONTRACT_NOT_FOUND = "CONTRACT_NOT_FOUND",
     WRONG_REQUEST_TYPE = "WRONG_REQUEST_TYPE",
     AUTH_FAILURE = "AUTH_FAILURE",
+  }
+
+  export interface NonceResponse {
+    address: string;
+    nonce: string;
+    timestamp: number;
   }
 }
