@@ -46,6 +46,20 @@ Resources:
             Path: /create
             Method: post
 
+  NonceRequestFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "blockshk-management-system-nonceRequestHandler"
+      CodeUri: api/
+      Handler: lib/api-handlers/activation/nonce.handler
+      Runtime: nodejs14.x
+      Events:
+        Contract:
+          Type: Api
+          Properties:
+            Path: /activation/nonce
+            Method: post
+
   LicenseTable:
     Type: AWS::DynamoDB::Table
     Properties:
