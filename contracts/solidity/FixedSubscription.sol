@@ -5,7 +5,6 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Royalty.sol";
 import "base64-sol/base64.sol";
-import "hardhat/console.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 error ERC721Metadata__URI_QueryFor_NonExistentToken();
