@@ -3,6 +3,18 @@ export enum ErrorCode {
   WEB3_ERROR = "WEB3_ERROR",
   INVALID_DATA = "INVALID_DATA",
   CORRUPTED_DATA = "CORRUPTED_DATA",
+  CONTRACT_INACCESSIBLE = "CONTRACT_INACCESSIBLE",
+  INVALID_CONTRACT = "INVALID_CONTRACT",
+}
+export enum Blockchain {
+  ETHEREUM = "ETHEREUM",
+  POLYGON = "POLYGON",
+  BSC = "BSC",
+}
+
+export enum ContractFileType {
+  ABI = "abi",
+  BIN = "bin",
 }
 
 export enum ContractTypes {
