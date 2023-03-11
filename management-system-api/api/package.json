@@ -12,7 +12,10 @@
   "dependencies": {
     "aws-lambda": "^1.0.6",
     "aws-sdk": "^2.1048.0",
-    "uuidv4": "^6.2.12"
+    "uuidv4": "^6.2.12",
+    "ethereumjs-tx": "^2.1.2",
+    "solc": "^0.8.17",
+    "web3": "^1.7.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.92",
