@@ -38,9 +38,10 @@ export class BlockChain {
     }
   }
 
-  public static connect() {
-    this.blockChain = new BlockChain();
-
+  public static connect(blockchain?: Blockchain) {
+    if (!BlockChain.blockChain) {
+      this.blockChain = new BlockChain(blockchain);
+    }
     return this.blockChain;
   }
 
@@ -137,9 +138,7 @@ export class BlockChain {
         JSON.parse(abi),
         contractAddress
       );
-      let methodEncode = contract.methods
-        .mint(traderAddress, tokenURI)
-        .encodeABI();
+      let methodEncode = contract.methods.mint(traderAddress).encodeABI();
 
       let nonceHex = this.web3.utils.toHex(nonce);
       let rawTx = {

@@ -30,7 +30,11 @@ export const handler = async (
     licenseId = event.pathParameters.id!;
     requestBody = request.parseBody(event);
 
-    response = await LicenseAdapter.deploy();
+    response = await LicenseAdapter.deploy(
+      "0xAa62006DcB8Ea5e90Ec241FA33768aa8c4887a34",
+      licenseId,
+      requestBody
+    );
     return apiUtil.get200(event.headers, response);
   } catch (error) {
     if (error instanceof ValidationError) {

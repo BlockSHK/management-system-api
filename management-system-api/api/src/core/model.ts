@@ -5,13 +5,23 @@ export enum ErrorCode {
   CORRUPTED_DATA = "CORRUPTED_DATA",
   CONTRACT_INACCESSIBLE = "CONTRACT_INACCESSIBLE",
   INVALID_CONTRACT = "INVALID_CONTRACT",
+  INVALID_LICENSE = "INVALID_LICENSE",
+  UNAUTHORIZED = "UNAUTHORIZED",
+  ALREADY_DEPLOYED = "ALREADY_DEPLOYED",
 }
 export enum Blockchain {
   ETHEREUM = "ETHEREUM",
   POLYGON = "POLYGON",
   BSC = "BSC",
 }
-
+export interface Contract {
+  blockchain: Blockchain;
+  address?: string;
+  name: string;
+  type: ContractTypes;
+  metadata?: any;
+  properties?: any[];
+}
 export enum ContractFileType {
   ABI = "abi",
   BIN = "bin",
@@ -60,8 +70,13 @@ export namespace apiInput {
     name: string;
     description: string;
     image: string;
+    company: string;
+    price: string;
   }
-
+  export interface LicenseUpdate extends LicenseInput {
+    status: LicenseStatus;
+    contract?: Contract;
+  }
   export interface NonceRequest {
     address: string;
   }
