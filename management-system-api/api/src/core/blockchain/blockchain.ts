@@ -76,7 +76,7 @@ export class BlockChain {
       const account = this.getAccount(privateKey);
       const key = Buffer.from(privateKey, "hex");
 
-      let gasPriceHex = this.web3.utils.toHex(200000000000);
+      let gasPriceHex = this.web3.utils.toHex(10000000000);
       let gasLimitHex = this.web3.utils.toHex(8000000);
       let nonce = await this.web3.eth.getTransactionCount(account.address);
 
