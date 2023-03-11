@@ -6,7 +6,6 @@ License represents a both license contract and end user license token or end use
 
 ```
 {
-    "id": "501c78a4-49a2-488e-8336-091be3e2843f",
     "software": "c2186403-5a6a-4fb7-90a6-543d7bba7784",
     "type": "CONTRACT",
     "name": "Microsoft Office - Premimum",
@@ -14,14 +13,13 @@ License represents a both license contract and end user license token or end use
     "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
     "status": "ACTIVE",
     "owner": "a0310c2a-ca87-421e-9235-dfadf323b412",
+    "company": "Microsoft",
+    "price": "0.01",
     "contract": {
         "blockchain": "ETHEREUM",
-        "address": "0x86758d1c5ab95ff324f7e0b2cdec38c86eebe768",
         "type": "PERPETUAL",
-        "metadata": {
-            ... metadata
-        }
-    },
+        "royalty": "0.01"
+    }
 }
 ```
 
