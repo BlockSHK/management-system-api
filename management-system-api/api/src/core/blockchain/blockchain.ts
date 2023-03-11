@@ -93,11 +93,11 @@ export class BlockChain {
         from: account.address,
       };
 
-      //   let txoption: TxOptions = {
-      //     common: new Common({ chain: this.getChain() }),
-      //   };
+      let txoption: TxOptions = {
+        common: new Common({ chain: "goerli" }),
+      };
 
-      let tx = new Transaction(rawTx);
+      let tx = new Transaction(rawTx, txoption);
       let signed: Transaction = tx.sign(key);
       let serializedTx = signed.serialize();
       let response = await this.web3.eth.sendSignedTransaction(
