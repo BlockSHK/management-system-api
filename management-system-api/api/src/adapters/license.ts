@@ -54,7 +54,7 @@ export namespace LicenseAdapter {
 
     const address = await blockchain.deployContract(
       license.contract!.name,
-      "c0c7fa3872dc6126898718a47ad6a0dc1c17ca0b8b0209213e0009bac8c2d66a",
+      "43a060fe31e2999f873a259d1734194d4006f3e6ca5fee56d20118b9138e6638", //account 5
       [license.company!, license.name, license.price, "1"]
     );
 
