@@ -6,7 +6,6 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Royalty.sol";
 import "base64-sol/base64.sol";
 
-
 error ERC721Metadata__URI_QueryFor_NonExistentToken();
 error PerpetualLicense__TransferFailed();
 error PerpetualLicense__NeedMoreETHSent();
@@ -36,7 +35,7 @@ contract PerpetualLicense is ERC721Royalty,Ownable{
     }
 
 
-    function mintToken() public payable  {
+    function buyToken() public payable  {
         if (msg.value < s_licensePrice) {
             revert PerpetualLicense__NeedMoreETHSent();
         }
