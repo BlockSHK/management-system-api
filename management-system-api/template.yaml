@@ -34,6 +34,29 @@ Resources:
             Path: /deploy/{id}
             Method: post
 
+  LicensePurchaseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "blockshk-management-system-PurchaseLicenseHandler"
+      CodeUri: api/
+      Handler: lib/api-handlers/license/purchase.handler
+      Runtime: nodejs14.x
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref LicenseTable
+        - S3ReadPolicy:
+            BucketName: !Sub "license-contract-management-system-${AWS::Region}"
+      Environment:
+        Variables:
+          LICENSE_TABLE_NAME: !Ref LicenseTable
+
+      Events:
+        Contract:
+          Type: Api
+          Properties:
+            Path: /purchase/{id}
+            Method: post
+
   LicenseCreateFunction:
     Type: AWS::Serverless::Function
     Properties:

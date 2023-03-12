@@ -77,6 +77,10 @@ export namespace apiInput {
     status: LicenseStatus;
     contract?: Contract;
   }
+  export interface LicensePurchaseInput {
+    address: string;
+  }
+
   export interface NonceRequest {
     address: string;
   }

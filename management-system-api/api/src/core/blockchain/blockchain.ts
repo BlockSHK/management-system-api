@@ -121,8 +121,7 @@ export class BlockChain {
     contractName: string,
     privateKey: string,
     contractAddress: string,
-    traderAddress: string,
-    tokenURI: string
+    traderAddress: string
   ): Promise<string> {
     try {
       const abi = await util.getContract(contractName, ContractFileType.ABI);
@@ -162,6 +161,7 @@ export class BlockChain {
         "0x" + serializedTx.toString("hex")
       );
 
+      console.log(response.transactionHash);
       return response.transactionHash;
     } catch (error) {
       if (!(error instanceof NFTError)) {
