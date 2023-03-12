@@ -129,7 +129,7 @@ export class BlockChain {
       const account = this.getAccount(privateKey);
       const key = Buffer.from(privateKey, "hex");
 
-      let gasPriceHex = this.web3.utils.toHex(200000000000);
+      let gasPriceHex = this.web3.utils.toHex(30000000000);
       let gasLimitHex = this.web3.utils.toHex(8000000);
       let nonce = await this.web3.eth.getTransactionCount(account.address);
 
@@ -137,7 +137,7 @@ export class BlockChain {
         JSON.parse(abi),
         contractAddress
       );
-      let methodEncode = contract.methods.mint(traderAddress).encodeABI();
+      let methodEncode = contract.methods.mintToken(traderAddress).encodeABI();
 
       let nonceHex = this.web3.utils.toHex(nonce);
       let rawTx = {
@@ -149,7 +149,7 @@ export class BlockChain {
       };
 
       let txoption: TxOptions = {
-        common: new Common({ chain: this.getChain() }),
+        common: new Common({ chain: "goerli" }),
       };
       let tx = new Transaction(rawTx, txoption);
 

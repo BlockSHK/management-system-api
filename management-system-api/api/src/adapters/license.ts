@@ -88,7 +88,7 @@ export namespace LicenseAdapter {
       contractAddress,
       licensePurchaseInput.address
     );
-    license.token.contract = contractAddress;
+    license.token = { contract: contractAddress };
     license.owner = licensePurchaseInput.address;
     license.id = uuid();
     return await licenseHandler.putLicense(license);
