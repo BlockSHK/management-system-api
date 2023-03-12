@@ -7,18 +7,26 @@ Description: >
 
 Globals:
   Function:
-    Timeout: 3
+    Timeout: 300
     MemorySize: 128
 
 Resources:
   LicenseDeployFunction:
     Type: AWS::Serverless::Function
     Properties:
+      FunctionName: !Sub "blockshk-management-system-DeployLicenseHandler"
       CodeUri: api/
       Handler: lib/api-handlers/license/deploy.handler
-      Runtime: nodejs16.x
-      Architectures:
-        - x86_64
+      Runtime: nodejs14.x
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref LicenseTable
+        - S3ReadPolicy:
+            BucketName: !Sub "license-contract-management-system-${AWS::Region}"
+      Environment:
+        Variables:
+          LICENSE_TABLE_NAME: !Ref LicenseTable
+
       Events:
         Contract:
           Type: Api
