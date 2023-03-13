@@ -166,9 +166,12 @@ Response
 
 ```
 {
-    "address": "0x96dc73c8b5969608c77375f085949744b5177660",
-    "nonce": "e3KS432Ds",
-    "timestamp": 1640325832000
+    "status": "OK",
+    "payload": {
+        "nonce": "dec9fd6d1fec9af30f8600f911a63012",
+        "address": "0x0c81414f8545522A0C97A39F83700De8230825b6",
+        "timestamp": 1678715480055
+    }
 }
 ```
 

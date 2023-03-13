@@ -84,11 +84,39 @@ Resources:
       CodeUri: api/
       Handler: lib/api-handlers/activation/nonce.handler
       Runtime: nodejs14.x
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ActivationRequestTable
+      Environment:
+        Variables:
+          ACTIVATION_REQUEST_TABLE_NAME: !Ref ActivationRequestTable
       Events:
         Contract:
           Type: Api
           Properties:
             Path: /activation/nonce
+            Method: post
+
+  NonceActivationFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "blockshk-management-system-nonceActivationHandler"
+      CodeUri: api/
+      Handler: lib/api-handlers/activation/activate.handler
+      Runtime: nodejs14.x
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ActivationRequestTable
+        - S3ReadPolicy:
+            BucketName: !Sub "license-contract-management-system-${AWS::Region}"
+      Environment:
+        Variables:
+          ACTIVATION_REQUEST_TABLE_NAME: !Ref ActivationRequestTable
+      Events:
+        Contract:
+          Type: Api
+          Properties:
+            Path: /activation/activate
             Method: post
 
   LicenseTable:
@@ -117,3 +145,18 @@ Resources:
             ReadCapacityUnits: 1
             WriteCapacityUnits: 1
       TableName: !Sub "blockshk-management-system-license"
+
+  ActivationRequestTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "nonce"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "nonce"
+          KeyType: "HASH"
+
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: !Sub "blockshk-management-system-activation"

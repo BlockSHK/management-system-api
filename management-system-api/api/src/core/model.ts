@@ -8,6 +8,7 @@ export enum ErrorCode {
   INVALID_LICENSE = "INVALID_LICENSE",
   UNAUTHORIZED = "UNAUTHORIZED",
   ALREADY_DEPLOYED = "ALREADY_DEPLOYED",
+  ACTIVATION_FAILED = "ACTIVATION_FAILED",
 }
 export enum Blockchain {
   ETHEREUM = "ETHEREUM",
@@ -53,7 +54,11 @@ export namespace internal {
     offset?: any;
     limit?: number;
   }
-
+  export interface Session {
+    nonce: string;
+    address: string;
+    timestamp: number;
+  }
   export interface License extends apiInput.LicenseInput {
     id: string;
     status: LicenseStatus;
@@ -84,6 +89,14 @@ export namespace apiInput {
   export interface NonceRequest {
     address: string;
   }
+
+  export interface ActivationVerificationRequest {
+    address: string;
+    contract: string;
+    tokenId: string;
+    nonce: string;
+    sign: string;
+  }
 }
 
 export namespace apiOutput {
@@ -98,6 +111,12 @@ export namespace apiOutput {
   export interface NonceResponse {
     address: string;
     nonce: string;
+    timestamp: number;
+  }
+
+  export interface ActivationVerificationResponse {
+    activate: string;
+    credential: Object;
     timestamp: number;
   }
 }

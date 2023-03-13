@@ -15,7 +15,7 @@ export class License {
     return newVersion;
   }
 
-  async getAssetById(licenseId: string): Promise<internal.License | null> {
+  async getLicenseById(licenseId: string): Promise<internal.License | null> {
     const asset = await DBService.getClient().getOneByPrimaryKey(
       License.LICENSE_TABLE_NAME,
       { id: licenseId }
