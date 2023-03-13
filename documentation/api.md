@@ -178,7 +178,7 @@ Response
 }
 ```
 
-**POST** `/auth/activate`
+**POST** `/activation/activate`
 
 Request
 
