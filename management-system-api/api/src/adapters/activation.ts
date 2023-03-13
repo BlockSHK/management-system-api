@@ -5,7 +5,7 @@ import { Activation } from "../core/entities/activation";
 import { ValidationError } from "../core/validation";
 import { BlockChain } from "../core/blockchain/blockchain";
 export namespace ActivationAdapter {
-  const nonceValidityDuration = 60000;
+  const nonceValidityDuration = 600000;
 
   export async function requestNonce(
     address: string
@@ -34,7 +34,7 @@ export namespace ActivationAdapter {
       const activationHandler = new Activation();
       dyResponse = await activationHandler.getSession(req.nonce);
       if (dyResponse) {
-        session = dyResponse.Item;
+        session = dyResponse;
       } else {
         console.error("Session not found for nonce: ", req.nonce);
         throw new ValidationError(
@@ -42,7 +42,8 @@ export namespace ActivationAdapter {
           ErrorCode.ACTIVATION_FAILED
         );
       }
-
+      console.log(dyResponse);
+      console.log(session);
       // Reject if nonce is generated before 60s
       let timestamp = Date.now();
       if (timestamp - session.timestamp > nonceValidityDuration) {
@@ -73,11 +74,11 @@ export namespace ActivationAdapter {
         console.debug("User session authenticated, address: ", session.address);
       } else {
         console.debug(
-          "User session authentication failed because signature validation failed, address: ",
+          "Activation failed because signature validation failed, address: ",
           session.address
         );
         throw new ValidationError(
-          "Authentication failed, invalid address",
+          "Activation failed, invalid address",
           ErrorCode.ACTIVATION_FAILED
         );
       }
