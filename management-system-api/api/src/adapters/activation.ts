@@ -1,6 +1,7 @@
 import { apiInput, apiOutput, ErrorCode, internal } from "../core/model";
 import { uuid } from "uuidv4";
 import crypto from "crypto";
+import { Activation } from "core/entities/activation";
 
 export namespace ActivationAdapter {
   const nonceValidityDuration = 60000;
@@ -17,8 +18,9 @@ export namespace ActivationAdapter {
       timestamp: timestamp,
     };
 
-    // Write the activation request to database
+    const activationHandler = new Activation();
+    const dyResponse = await activationHandler.addSession(session);
 
-    return session;
+    return dyResponse;
   }
 }

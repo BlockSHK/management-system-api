@@ -84,6 +84,12 @@ Resources:
       CodeUri: api/
       Handler: lib/api-handlers/activation/nonce.handler
       Runtime: nodejs14.x
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ActivationRequestTable
+      Environment:
+        Variables:
+          ACTIVATION_REQUEST_TABLE_NAME: !Ref ActivationRequestTable
       Events:
         Contract:
           Type: Api
@@ -117,3 +123,18 @@ Resources:
             ReadCapacityUnits: 1
             WriteCapacityUnits: 1
       TableName: !Sub "blockshk-management-system-license"
+
+  ActivationRequestTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "nonce"
+          AttributeType: "S"
+      KeySchema:
+        - AttributeName: "nonce"
+          KeyType: "HASH"
+
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: !Sub "blockshk-management-system-activation"

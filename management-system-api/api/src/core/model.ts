@@ -53,7 +53,11 @@ export namespace internal {
     offset?: any;
     limit?: number;
   }
-
+  export interface Session {
+    nonce: string;
+    address: string;
+    timestamp: number;
+  }
   export interface License extends apiInput.LicenseInput {
     id: string;
     status: LicenseStatus;

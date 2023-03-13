@@ -33,7 +33,7 @@ export namespace LicenseAdapter {
 
     const licenseHandler = new License();
     const latestVersion: internal.License | null =
-      await licenseHandler.getAssetById(licenseId);
+      await licenseHandler.getLicenseById(licenseId);
 
     if (!latestVersion) {
       throw new ValidationError("Invalid license.", ErrorCode.INVALID_LICENSE);
@@ -69,7 +69,7 @@ export namespace LicenseAdapter {
   ) {
     const licenseHandler = new License();
     const latestVersion: internal.License | null =
-      await licenseHandler.getAssetById(licenseId);
+      await licenseHandler.getLicenseById(licenseId);
 
     if (!latestVersion) {
       throw new ValidationError("Invalid license.", ErrorCode.INVALID_LICENSE);
