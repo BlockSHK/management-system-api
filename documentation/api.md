@@ -156,23 +156,17 @@ Request
 
 ```
 {
-    "address": "0x96dc73c8b5969608c77375f085949744b5177660",
-    "contract": "0x26daFAC779d8434CD339682d3550e4815c98AB4D",
-    "tokenId": "1"
+    "address": "0x96dc73c8b5969608c77375f085949744b5177660"
 }
 ```
 
 - The `account` the account of the user which have the token of the given license.
-- The `contract` is the address of the license contract
-- The `tokenId` is the ID of the token give account have
 
 Response
 
 ```
 {
     "address": "0x96dc73c8b5969608c77375f085949744b5177660",
-    "contract": "0x26daFAC779d8434CD339682d3550e4815c98AB4D",
-    "tokenId": "1",
     "nonce": "e3KS432Ds",
     "timestamp": 1640325832000
 }
