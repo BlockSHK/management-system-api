@@ -1,4 +1,10 @@
-import { apiInput, apiOutput, ErrorCode, internal } from "../core/model";
+import {
+  apiInput,
+  apiOutput,
+  ErrorCode,
+  internal,
+  Blockchain,
+} from "../core/model";
 import { uuid } from "uuidv4";
 import crypto from "crypto";
 import { Activation } from "../core/entities/activation";
@@ -82,13 +88,22 @@ export namespace ActivationAdapter {
           ErrorCode.ACTIVATION_FAILED
         );
       }
+      const blockchain = BlockChain.connect(Blockchain.ETHEREUM);
+      const owner = await blockchain.getTokenOwner(req.contract, req.tokenId);
 
       timestamp = Date.now();
-      return {
-        activate: "true",
+
+      let response = {
+        activate: "false",
         timestamp: timestamp,
         credential: "",
       };
+
+      if (owner.toLowerCase() == req.address.toLowerCase()) {
+        response.activate = "true";
+      }
+
+      return response;
     } catch (error) {
       console.log(` Error while verifying user ${error} `);
       throw error;

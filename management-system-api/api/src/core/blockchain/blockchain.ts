@@ -20,6 +20,7 @@ export class BlockChain {
         case Blockchain.ETHEREUM:
           this.nodeUrl =
             "https://eth-goerli.g.alchemy.com/v2/wLpA-TL3WxjCfKMfTcaxJQ7fL6MIQ1mP";
+          this.web3 = new Web3(new Web3.providers.HttpProvider(this.nodeUrl));
           break;
         case Blockchain.POLYGON:
         case Blockchain.BSC:
@@ -27,7 +28,9 @@ export class BlockChain {
             "https://eth-goerli.g.alchemy.com/v2/wLpA-TL3WxjCfKMfTcaxJQ7fL6MIQ1mP";
           break;
         default:
-          this.web3 = new Web3();
+          this.nodeUrl =
+            "https://eth-goerli.g.alchemy.com/v2/wLpA-TL3WxjCfKMfTcaxJQ7fL6MIQ1mP";
+          this.web3 = new Web3(new Web3.providers.HttpProvider(this.nodeUrl));
           return;
       }
       this.nodeUrl =
@@ -182,6 +185,19 @@ export class BlockChain {
     return signing_address.toLowerCase() === address.toLowerCase();
   }
 
+  public async getTokenOwner(
+    contractAddress: string,
+    tokenId: string
+  ): Promise<string> {
+    const abi = (
+      await util.getContract("PerpetualLicense", ContractFileType.ABI)
+    ).toString();
+    const contract = new this.web3.eth.Contract(
+      JSON.parse(abi),
+      contractAddress
+    );
+    return await contract.methods.ownerOf(tokenId).call();
+  }
   public getweb3() {
     console.log(this.web3.givenProvider);
     return this.web3;
