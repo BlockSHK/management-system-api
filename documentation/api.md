@@ -104,7 +104,7 @@ Response
         "price": "10000000000000000",
         "software": "c2186403-5a6a-4fb7-90a6-543d7bba7784",
         "status": "ACTIVE",
-        "type": "TOKEN_PERPETUAL"
+        "type": "CONTRACT_PERPETUAL"
     }
 }
 ```
@@ -141,7 +141,7 @@ Response
         "price": "10000000000000000",
         "software": "c2186403-5a6a-4fb7-90a6-543d7bba7784",
         "status": "ACTIVE",
-        "type": "TOKEN"
+        "type": "TOKEN_PERPETUAL"
     }
 }
 ```
