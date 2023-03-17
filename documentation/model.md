@@ -90,12 +90,12 @@ Software represents set of license related to one software.
 ```
 
 {
-"id": "bd7b7740-3f44-4238-a834-4606621b6ba6",
-"category": "APPLICTION",
-"name": "Microsoft Word 2016",
-"description": "Microsoft Word 2016 software for document editing",
-"image": "https://i0.wp.com/isoriver.com/wp-content/uploads/2019/11/word-2016.jpg?w=920&ssl=1",
-"owner": "a0310c2a-ca87-421e-9235-dfadf323b412",
+        "id": "bd7b7740-3f44-4238-a834-4606621b6ba6",
+        "category": "APPLICTION",
+        "name": "Microsoft Word 2016",
+        "description": "Microsoft Word 2016 software for document editing",
+        "image": "https://i0.wp.com/isoriver.com/wp-content/uploads/2019/11/word-2016.jpg?w=920&ssl=1",
+        "owner": "a0310c2a-ca87-421e-9235-dfadf323b412",
 }
 
 ```
