@@ -45,10 +45,10 @@ License represents a both license contract and end user license token or end use
         "software": "c2186403-5a6a-4fb7-90a6-543d7bba7784",
         "status": "ACTIVE",
         "type": "TOKEN_PERPETUAL",
-    "token": {
-        "id": 123,
-        "contract": "0x26daFAC779d8434CD339682d3550e4815c98AB4D"
-    },
+        "token": {
+                "id": 123,
+                "contract": "0x26daFAC779d8434CD339682d3550e4815c98AB4D"
+        },
 
 }
 ```
