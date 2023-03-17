@@ -1,3 +1,4 @@
+import { LicenseTypes } from "./../core/model";
 import { License } from "./../core/entities/license";
 import { apiInput, ErrorCode, internal, LicenseStatus } from "../core/model";
 import { ValidationError } from "../core/validation";
@@ -88,6 +89,7 @@ export namespace LicenseAdapter {
       contractAddress,
       licensePurchaseInput.address
     );
+    license.type = LicenseTypes.TOKEN_PERPETUAL;
     license.token = { contract: contractAddress };
     license.owner = licensePurchaseInput.address;
     license.id = uuid();
