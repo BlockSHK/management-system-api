@@ -25,7 +25,7 @@ Request
 ```
 {
         "id": "30d069d1-26be-47cb-8ea8-9df3fb602c92",
-        "type": "CONTRACT",
+        "type": "CONTRACT_PERPETUAL",
         "name": "Microsoft Office - Premimum",
         "description": "Premimum package for the microsoft office 2003. License valid",
         "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
@@ -45,7 +45,7 @@ Response
     "payload": {
         "id": "30d069d1-26be-47cb-8ea8-9df3fb602c92",
         "software": "c2186403-5a6a-4fb7-90a6-543d7bba7784",
-        "type": "CONTRACT",
+        "type": "CONTRACT_PERPETUAL",
         "name": "Microsoft Office - Premimum",
         "description": "Premimum package for the microsoft office 2003. License valid",
         "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
@@ -65,7 +65,7 @@ Request
 {
         "id": "30d069d1-26be-47cb-8ea8-9df3fb602c92",
         "software": "c2186403-5a6a-4fb7-90a6-543d7bba7784",
-        "type": "CONTRACT",
+        "type": "CONTRACT_PERPETUAL",
         "name": "Microsoft Office - Premimum",
         "description": "Premimum package for the microsoft office 2003. License valid",
         "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
@@ -104,7 +104,7 @@ Response
         "price": "10000000000000000",
         "software": "c2186403-5a6a-4fb7-90a6-543d7bba7784",
         "status": "ACTIVE",
-        "type": "CONTRACT"
+        "type": "TOKEN_PERPETUAL"
     }
 }
 ```
