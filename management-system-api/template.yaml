@@ -21,6 +21,8 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref LicenseTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SysConfigsTable
         - S3ReadPolicy:
             BucketName: !Sub "license-contract-management-system-${AWS::Region}"
       Environment:
@@ -44,6 +46,8 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref LicenseTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SysConfigsTable
         - S3ReadPolicy:
             BucketName: !Sub "license-contract-management-system-${AWS::Region}"
       Environment:
@@ -67,6 +71,8 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref LicenseTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SysConfigsTable
       Environment:
         Variables:
           LICENSE_TABLE_NAME: !Ref LicenseTable
@@ -87,6 +93,8 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref ActivationRequestTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SysConfigsTable
       Environment:
         Variables:
           ACTIVATION_REQUEST_TABLE_NAME: !Ref ActivationRequestTable
@@ -107,6 +115,8 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref ActivationRequestTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SysConfigsTable
         - S3ReadPolicy:
             BucketName: !Sub "license-contract-management-system-${AWS::Region}"
       Environment:
@@ -160,3 +170,18 @@ Resources:
         ReadCapacityUnits: 1
         WriteCapacityUnits: 1
       TableName: !Sub "blockshk-management-system-activation"
+
+  SysConfigsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "config"
+          AttributeType: "S"
+
+      KeySchema:
+        - AttributeName: "config"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: !Sub "blockshk-management-system-config"

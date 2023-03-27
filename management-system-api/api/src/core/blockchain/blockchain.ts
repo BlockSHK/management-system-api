@@ -6,7 +6,7 @@ import { ValidationError } from "../validation";
 import { Blockchain, ContractFileType, ErrorCode } from "../model";
 import { util } from "../util";
 import { NFTError } from "../../core/error";
-
+import { SysConfig } from "../../core/entities/systemConfig";
 export class BlockChain {
   private web3: Web3;
   private static blockChain: BlockChain;
@@ -79,8 +79,10 @@ export class BlockChain {
       const account = this.getAccount(privateKey);
       const key = Buffer.from(privateKey, "hex");
 
-      let gasPriceHex = this.web3.utils.toHex(30000000000);
-      let gasLimitHex = this.web3.utils.toHex(8000000);
+      const gasPrice = await SysConfig.getSysConfigNum("gas_price");
+      const gasLimit = await SysConfig.getSysConfigNum("gas_limit");
+      let gasPriceHex = this.web3.utils.toHex(gasPrice);
+      let gasLimitHex = this.web3.utils.toHex(gasLimit);
       let nonce = await this.web3.eth.getTransactionCount(account.address);
 
       let nonceHex = this.web3.utils.toHex(nonce);
@@ -132,8 +134,10 @@ export class BlockChain {
       const account = this.getAccount(privateKey);
       const key = Buffer.from(privateKey, "hex");
 
-      let gasPriceHex = this.web3.utils.toHex(30000000000);
-      let gasLimitHex = this.web3.utils.toHex(8000000);
+      const gasPrice = await SysConfig.getSysConfigNum("gas_price");
+      const gasLimit = await SysConfig.getSysConfigNum("gas_limit");
+      let gasPriceHex = this.web3.utils.toHex(gasPrice);
+      let gasLimitHex = this.web3.utils.toHex(gasLimit);
       let nonce = await this.web3.eth.getTransactionCount(account.address);
 
       let contract = new this.web3.eth.Contract(

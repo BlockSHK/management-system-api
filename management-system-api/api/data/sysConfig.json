@@ -1,0 +1,63 @@
+[
+  {
+    "PutRequest": {
+      "Item": {
+        "config": {
+          "S": "georli_node"
+        },
+        "value": {
+          "S": "https://eth-goerli.g.alchemy.com/v2/wLpA-TL3WxjCfKMfTcaxJQ7fL6MIQ1mP"
+        }
+      }
+    }
+  },
+
+  {
+    "PutRequest": {
+      "Item": {
+        "config": {
+          "S": "gas_price"
+        },
+        "value": {
+          "N": "100000000000"
+        }
+      }
+    }
+  },
+  {
+    "PutRequest": {
+      "Item": {
+        "config": {
+          "S": "gas_limit"
+        },
+        "value": {
+          "N": "8000000"
+        }
+      }
+    }
+  },
+  {
+    "PutRequest": {
+      "Item": {
+        "config": {
+          "S": "Admin_Public_key"
+        },
+        "value": {
+          "S": "0xBd7c1AE60eCf1Fe7aDE8abff6F4f2533C9145b2A"
+        }
+      }
+    }
+  },
+  {
+    "PutRequest": {
+      "Item": {
+        "config": {
+          "S": "Admin_Private_key"
+        },
+        "value": {
+          "S": "43a060fe31e2999f873a259d1734194d4006f3e6ca5fee56d20118b9138e6638"
+        }
+      }
+    }
+  }
+]
