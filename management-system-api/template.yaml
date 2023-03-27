@@ -160,3 +160,18 @@ Resources:
         ReadCapacityUnits: 1
         WriteCapacityUnits: 1
       TableName: !Sub "blockshk-management-system-activation"
+
+  SysConfigsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "config"
+          AttributeType: "S"
+
+      KeySchema:
+        - AttributeName: "config"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      TableName: !Sub "blockshk-management-system-config"
