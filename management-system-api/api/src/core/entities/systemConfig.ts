@@ -3,9 +3,9 @@ export namespace SysConfig {
   const CONFIG_TABLE_NAME =
     process.env.SYS_CONFIGS_TABLE_NAME || "blockshk-management-system-config";
 
-  async function getConfig(config_name: string): Promise<any> {
+  async function getConfig(config: string): Promise<any> {
     return await DBService.getClient().getOneByPrimaryKey(CONFIG_TABLE_NAME, {
-      config_name,
+      config,
     });
   }
 
@@ -18,15 +18,15 @@ export namespace SysConfig {
     return "";
   }
 
-  export async function getSysConfigList(name: string): Promise<Array<string>> {
+  export async function getSysConfigList(name: string): Promise<string> {
     let dyResponse = await getConfig(name);
     console.log(dyResponse);
     console.log("config list");
     if (dyResponse) {
-      return dyResponse.value;
+      return dyResponse.value.values;
     }
 
-    return [];
+    return "";
   }
 
   export async function getSysConfigNum(name: string): Promise<number> {
