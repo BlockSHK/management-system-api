@@ -1,0 +1,323 @@
+[
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "default_avatar"
+                }, 
+                "value": {
+                    "S": "https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=2413146"
+                }
+            }
+        }
+    }, 
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "ropsten_node"
+                }, 
+                "value": {
+                    "S": "https://ropsten.infura.io/v3/824ba215cbbc412baceec79fb9699aea"
+                }
+            }
+        }
+    },
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "polygon_node"
+                }, 
+                "value": {
+                    "S": "https://rpc-mumbai.maticvigil.com/v1/0c3b0da6d99071efc4cd0b8126a5c0fc514e47ac"
+                }
+            }
+        }
+    },
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "bsc_node"
+                }, 
+                "value": {
+                    "S": "https://data-seed-prebsc-1-s1.binance.org:8545/"
+                }
+            }
+        }
+    },
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "ipfs_access_node"
+                }, 
+                "value": {
+                    "S": "https://ipfs.io/ipfs/"
+                }
+            }
+        }
+    },
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "tx_confirmation_timeout"
+                }, 
+                "value": {
+                    "N": "15"
+                }
+            }
+        }
+    },
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "presignedurl_expiration_seconds"
+                }, 
+                "value": {
+                    "N": "300"
+                }
+            }
+        }
+    },
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "presignedurl_expiration_seconds_asset"
+                }, 
+                "value": {
+                    "N": "600"
+                }
+            }
+        }
+    },
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "gas_price"
+                }, 
+                "value": {
+                    "N": "100000000000"
+                }
+            }
+        }
+    },
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "gas_limit"
+                }, 
+                "value": {
+                    "N": "8000000"
+                }
+            }
+        }
+    },
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "ADMIN1_ADD"
+                }, 
+                "value": {
+                    "S": "0x1cEb1c99ac0c95B12602020De82b84edad62E8FB"
+                   
+                }
+               
+            }
+        }
+    },
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "Gas_payers"
+                }, 
+                "value": {
+                    "N":"16"
+                   
+                }
+            }
+        }
+    },
+        {
+            "PutRequest": {
+                "Item": {
+                    "config": {
+               
+                    "S": "STRIPE_PUBLIC_KEY"
+                }, 
+                "value": {
+                    "S": "pk_test_51KSxjTJeiscTlfnqYYaf3yejUN00nekb8LnFscUrwsB7rDRQWCetwWAP146zDx5IOI8dlcXkFGTWPa63CQBzmyGP00WSsc96UZ"
+                   
+                } 
+            }
+        }
+    },
+    {
+        "PutRequest":{
+            "Item":{
+                "config": {
+                    "S": "ropsten_erc20_contract"
+                },
+                "value": {
+                    "S": "0xc778417E063141139Fce010982780140Aa0cD5Ab"
+                }
+            }
+        }
+    },
+    {
+        "PutRequest":{
+            "Item":{
+                "config": {
+                    "S": "polygon_erc20_contract"
+                },
+                "value": {
+                    "S": "0xA6FA4fB5f76172d178d61B04b0ecd319C5d1C0aa"
+                }
+            }
+        }
+    },
+    {
+        "PutRequest":{
+            "Item":{
+                "config": {
+                    "S": "bsc_erc20_contract"
+                },
+                "value": {
+                    "S": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+                }
+            }
+        }
+    },
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "token_transfer_schedule_time"
+                }, 
+                "value": {
+                    "N": "5"
+                }
+            }
+        }
+    },
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "tx_confirmation_count"
+                }, 
+                "value": {
+                    "N": "10"
+                }
+            }
+        }
+    },
+    {
+        "PutRequest": {
+            "Item": {
+                "config": {
+                    "S": "contract_details"
+                }, 
+                "value": {
+                    "M": {
+                        "Genesis": {
+                            "M": {
+                                "fields": {
+                                    "L": [
+                                        {
+                                            "M": {
+                                                "fieldName": { "S": "name_" },
+                                                "displayName": { "S": "Name" },
+                                                "type": { "S": "string" }
+                                            }
+                                        },
+                                        {
+                                            "M": {
+                                                "fieldName": { "S": "symbol_" },
+                                                "displayName": { "S": "Symbol" },
+                                                "type": { "S": "string" }
+                                            }
+                                        },
+                                        {
+                                            "M": {
+                                                "fieldName": { "S": "maxToken" },
+                                                "displayName": { "S": "Max Tokens" },
+                                                "type": { "S": "number" }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "Collection": {
+                            "M": {
+                                "fields": {
+                                    "L": [
+                                        {
+                                            "M": {
+                                                "fieldName": { "S": "name_" },
+                                                "displayName": { "S": "Name" },
+                                                "type": { "S": "string" }
+                                            }
+                                        },
+                                        {
+                                            "M": {
+                                                "fieldName": { "S": "symbol_" },
+                                                "displayName": { "S": "Symbol" },
+                                                "type": { "S": "string" }
+                                            }
+                                        },
+                                        {
+                                            "M": {
+                                                "fieldName": { "S": "maxToken" },
+                                                "displayName": { "S": "Max Tokens" },
+                                                "type": { "S": "number" }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "OpenEdition": {
+                            "M": {
+                                "fields": {
+                                    "L": [
+                                        {
+                                            "M": {
+                                                "fieldName": { "S": "name_" },
+                                                "displayName": { "S": "Name" },
+                                                "type": { "S": "string" }
+                                            }
+                                        },
+                                        {
+                                            "M": {
+                                                "fieldName": { "S": "symbol_" },
+                                                "displayName": { "S": "Symbol" },
+                                                "type": { "S": "string" }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "Migrations": {
+                            "M": {
+                                "fields": {
+                                    "L": []
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+]
