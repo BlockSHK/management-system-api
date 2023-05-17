@@ -35,9 +35,8 @@ export enum ContractTypes {
 
 export enum LicenseTypes {
   CONTRACT_PERPETUAL = "CONTRACT_PERPETUAL",
-  CONTRACT_SUBSCRIPTION = "CONTRACT_SUBSCRIPTION",
-  TOKEN_PERPETUAL = "TOKEN_PERPETUAL",
-  TOKEN_SUBSCRIPTION = "TOKEN_SUBSCRIPTION",
+  CONTRACT_FIXED_SUBSCRIPTION = "CONTRACT_FIXED_SUBSCRIPTION",
+  CONTRACT_AUTO_RENEW_SUBSCRIPTION = "CONTRACT_AUTO_RENEW_SUBSCRIPTION",
 }
 
 export enum RejectCode {
@@ -75,8 +74,12 @@ export namespace apiInput {
     name: string;
     description: string;
     image: string;
+    metadata: string;
     company: string;
     price: string;
+    owner: string;
+    subscriptionPeriod?: number;
+    paymentToken?: string;
   }
   export interface LicenseUpdate extends LicenseInput {
     status: LicenseStatus;

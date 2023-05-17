@@ -22,10 +22,7 @@ export const handler = async (
     }
 
     requestBody = request.parseBody(event);
-    response = await LicenseAdapter.create(
-      "0xAa62006DcB8Ea5e90Ec241FA33768aa8c4887a34",
-      requestBody
-    );
+    response = await LicenseAdapter.create(requestBody);
     return apiUtil.get200(event.headers, response);
   } catch (error) {
     if (error instanceof ValidationError) {

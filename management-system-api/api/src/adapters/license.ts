@@ -5,17 +5,13 @@ import { ValidationError } from "../core/validation";
 import { uuid } from "uuidv4";
 import { BlockChain } from "../core/blockchain/blockchain";
 export namespace LicenseAdapter {
-  export async function create(
-    requestUserId: string,
-    licenseInput: apiInput.LicenseInput
-  ) {
+  export async function create(licenseInput: apiInput.LicenseInput) {
     const licenseId = uuid();
 
     const license: internal.License = {
       id: licenseId,
       ...licenseInput,
       status: LicenseStatus.ACTIVE,
-      owner: requestUserId,
     };
 
     const licenseHandler = new License();
