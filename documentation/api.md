@@ -31,11 +31,10 @@ Request
         "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
         "status": "ACTIVE",
         "company": "Google",
+        "metadata":"https://ipfs.io/ipfs/QmZmX5iTJc3C98dbkwrHMJsTGATduYNHCUmqpz7t4iSQpW",
         "price": "10000000000000000"
 }
 ```
-
-- The `account` the account that the user is trying to connect to the nft-marketplace.
 
 Response
 
@@ -72,12 +71,10 @@ Request
         "status": "ACTIVE",
         "company": "Google",
         "price": "10000000000000000",
+        "metadata":"https://ipfs.io/ipfs/QmZmX5iTJc3C98dbkwrHMJsTGATduYNHCUmqpz7t4iSQpW",
         "owner": "0xAa62006DcB8Ea5e90Ec241FA33768aa8c4887a34",
         "contract": {
-            "name": "PerpetualLicense",
-            "blockchain": "ETHEREUM",
-            "type": "PERPETUAL",
-            "royalty": "0.01"
+            "blockchain": "ETHEREUM"
         }
 }
 ```
@@ -93,14 +90,13 @@ Response
         "contract": {
             "address": "0x26daFAC779d8434CD339682d3550e4815c98AB4D",
             "blockchain": "ETHEREUM",
-            "name": "PerpetualLicense",
-            "royalty": "0.01",
             "type": "PERPETUAL"
         },
         "description": "Premimum package for the microsoft office 2003. License valid",
         "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
         "name": "Microsoft Office - Premimum",
         "owner": "0x0c81414f8545522A0C97A39F83700De8230825b6",
+        "metadata":"https://ipfs.io/ipfs/QmZmX5iTJc3C98dbkwrHMJsTGATduYNHCUmqpz7t4iSQpW",
         "price": "10000000000000000",
         "software": "c2186403-5a6a-4fb7-90a6-543d7bba7784",
         "status": "ACTIVE",

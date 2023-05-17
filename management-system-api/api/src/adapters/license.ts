@@ -85,7 +85,7 @@ export namespace LicenseAdapter {
       contractAddress,
       licensePurchaseInput.address
     );
-    license.type = LicenseTypes.TOKEN_PERPETUAL;
+    license.type = LicenseTypes.CONTRACT_PERPETUAL;
     license.token = { contract: contractAddress };
     license.owner = licensePurchaseInput.address;
     license.id = uuid();
