@@ -10,8 +10,7 @@ License represents a both license contract and end user license token or end use
         "company": "Microsoft",
         "contract": {
             "address": "0x26daFAC779d8434CD339682d3550e4815c98AB4D",
-            "blockchain": "ETHEREUM",
-            "type": "PERPETUAL"
+            "blockchain": "ETHEREUM"
         },
         "description": "Premimum package for the microsoft office 2003. License valid",
         "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
@@ -31,8 +30,7 @@ License represents a both license contract and end user license token or end use
         "company": "Microsoft",
         "contract": {
             "address": "0x26daFAC779d8434CD339682d3550e4815c98AB4D",
-            "blockchain": "ETHEREUM",
-            "type": "PERPETUAL"
+            "blockchain": "ETHEREUM"
         },
         "description": "Premimum package for the microsoft office 2003. License valid",
         "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
@@ -53,8 +51,7 @@ License represents a both license contract and end user license token or end use
         "company": "Microsoft",
         "contract": {
             "address": "0x26daFAC779d8434CD339682d3550e4815c98AB4D",
-            "blockchain": "ETHEREUM",
-            "type": "PERPETUAL"
+            "blockchain": "ETHEREUM"
         },
         "description": "Premimum package for the microsoft office 2003. License valid",
         "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
@@ -91,10 +88,6 @@ License represents a both license contract and end user license token or end use
   - `blockchain` (string, enum) is the blockchain hosting the contract. Possible values are;
     - ETHEREUM - Ethereum
   - `address` (string, address) is the address of the contract.
-  - `type` (string, enum) is the type of the contract. Possible values are;
-    - PERPETUAL
-    - AUTO_RENEW_SUBSCRIPTION
-    - FIXED_SUBSCRIPTION
 
 ## Software
 

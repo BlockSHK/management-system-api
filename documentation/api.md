@@ -89,8 +89,7 @@ Response
         "company": "Google",
         "contract": {
             "address": "0x26daFAC779d8434CD339682d3550e4815c98AB4D",
-            "blockchain": "ETHEREUM",
-            "type": "PERPETUAL"
+            "blockchain": "ETHEREUM"
         },
         "description": "Premimum package for the microsoft office 2003. License valid",
         "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
