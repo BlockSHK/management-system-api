@@ -1,3 +1,4 @@
+import { Activation } from "./../entities/activation";
 import Web3 from "web3";
 import { Account } from "web3-core";
 import Common from "@ethereumjs/common";
@@ -76,6 +77,13 @@ export class BlockChain {
         await util.getContract(contractName, ContractFileType.ABI)
       ).toString();
 
+      let ActivationContractAddress = "";
+      if (contractName == "PerpetualLicense") {
+        let ActivationContractAddress = await this.deployActivationContract(
+          privateKey
+        );
+        properties.push(ActivationContractAddress);
+      }
       const account = this.getAccount(privateKey);
       const key = Buffer.from(privateKey, "hex");
 
@@ -109,6 +117,14 @@ export class BlockChain {
         "0x" + serializedTx.toString("hex")
       );
       let contractAddress = response.contractAddress!;
+
+      if (contractName == "PerpetualLicense") {
+        let response = await this.updateActivationContract(
+          ActivationContractAddress,
+          contractAddress,
+          privateKey
+        );
+      }
       return contractAddress;
     } catch (error) {
       if (!(error instanceof NFTError)) {
@@ -189,6 +205,116 @@ export class BlockChain {
     return signing_address.toLowerCase() === address.toLowerCase();
   }
 
+  public async updateActivationContract(
+    ActivationContractAddress: string,
+    LicenseContractAddress: string,
+    privateKey: string
+  ) {
+    try {
+      const abi = await util.getContract(
+        "LicenseActivation",
+        ContractFileType.ABI
+      );
+
+      const account = this.getAccount(privateKey);
+      const key = Buffer.from(privateKey, "hex");
+
+      const gasPrice = await SysConfig.getSysConfigNum("gas_price");
+      const gasLimit = await SysConfig.getSysConfigNum("gas_limit");
+      let gasPriceHex = this.web3.utils.toHex(gasPrice);
+      let gasLimitHex = this.web3.utils.toHex(gasLimit);
+      let nonce = await this.web3.eth.getTransactionCount(account.address);
+
+      let contract = new this.web3.eth.Contract(
+        JSON.parse(abi),
+        ActivationContractAddress
+      );
+      let methodEncode = contract.methods
+        .initialize(LicenseContractAddress)
+        .encodeABI();
+
+      let nonceHex = this.web3.utils.toHex(nonce);
+      let rawTx = {
+        nonce: nonceHex,
+        gasPrice: gasPriceHex,
+        gasLimit: gasLimitHex,
+        data: methodEncode,
+        to: ActivationContractAddress,
+      };
+
+      let txoption: TxOptions = {
+        common: new Common({ chain: "goerli" }),
+      };
+      let tx = new Transaction(rawTx, txoption);
+
+      let signed: Transaction = tx.sign(key);
+
+      let serializedTx = signed.serialize();
+
+      let response = await this.web3.eth.sendSignedTransaction(
+        "0x" + serializedTx.toString("hex")
+      );
+
+      console.log(response.transactionHash);
+      return response.transactionHash;
+    } catch (error) {
+      if (!(error instanceof NFTError)) {
+        console.error(
+          "Error occurred while updating activation contract",
+          error
+        );
+        throw new NFTError(
+          "Error occurred while updating activation contract",
+          ErrorCode.WEB3_ERROR
+        );
+      }
+      throw error;
+    }
+  }
+
+  public async deployActivationContract(privateKey: string) {
+    const bycode = (
+      await util.getContract("LicenseActivation", ContractFileType.BIN)
+    ).toString();
+    const abi = (
+      await util.getContract("LicenseActivation", ContractFileType.ABI)
+    ).toString();
+
+    const account = this.getAccount(privateKey);
+    const key = Buffer.from(privateKey, "hex");
+
+    const gasPrice = await SysConfig.getSysConfigNum("gas_price");
+    const gasLimit = await SysConfig.getSysConfigNum("gas_limit");
+    let gasPriceHex = this.web3.utils.toHex(gasPrice);
+    let gasLimitHex = this.web3.utils.toHex(gasLimit);
+    let nonce = await this.web3.eth.getTransactionCount(account.address);
+
+    let nonceHex = this.web3.utils.toHex(nonce);
+    const contract = new this.web3.eth.Contract(JSON.parse(abi));
+    const options = { data: bycode, arguments: [] };
+    const transaction = contract.deploy(options);
+
+    let rawTx = {
+      nonce: nonceHex,
+      gasPrice: gasPriceHex,
+      gasLimit: gasLimitHex,
+      data: transaction.encodeABI(),
+      from: account.address,
+    };
+
+    let txoption: TxOptions = {
+      common: new Common({ chain: "goerli" }),
+    };
+
+    let tx = new Transaction(rawTx, txoption);
+    let signed: Transaction = tx.sign(key);
+    let serializedTx = signed.serialize();
+    let response = await this.web3.eth.sendSignedTransaction(
+      "0x" + serializedTx.toString("hex")
+    );
+    let contractAddress = response.contractAddress!;
+    return contractAddress;
+  }
   public async getTokenOwner(
     contractAddress: string,
     tokenId: string
