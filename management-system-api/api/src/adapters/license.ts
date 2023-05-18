@@ -4,32 +4,27 @@ import { apiInput, ErrorCode, internal, LicenseStatus } from "../core/model";
 import { ValidationError } from "../core/validation";
 import { uuid } from "uuidv4";
 import { BlockChain } from "../core/blockchain/blockchain";
+import { SysConfig } from "../core/entities/systemConfig";
 export namespace LicenseAdapter {
-  export async function create(
-    requestUserId: string,
-    licenseInput: apiInput.LicenseInput
-  ) {
+  export async function create(licenseInput: apiInput.LicenseInput) {
     const licenseId = uuid();
 
     const license: internal.License = {
       id: licenseId,
       ...licenseInput,
       status: LicenseStatus.ACTIVE,
-      owner: requestUserId,
     };
 
     const licenseHandler = new License();
     return await licenseHandler.putLicense(license);
   }
   export async function deploy(
-    requestUserId: string,
     licenseId: string,
     licenseInput: apiInput.LicenseUpdate
   ) {
     const license: internal.License = {
       id: licenseId,
       ...licenseInput,
-      owner: requestUserId,
     };
 
     const licenseHandler = new License();
@@ -39,7 +34,7 @@ export namespace LicenseAdapter {
     if (!latestVersion) {
       throw new ValidationError("Invalid license.", ErrorCode.INVALID_LICENSE);
     }
-    if (latestVersion.owner != requestUserId) {
+    if (latestVersion.owner != license.owner) {
       throw new ValidationError(
         "User is not permitted to update this license",
         ErrorCode.UNAUTHORIZED
@@ -52,11 +47,52 @@ export namespace LicenseAdapter {
       );
     }
     const blockchain = BlockChain.connect(license.contract!.blockchain);
+    let contractName;
+    let parameters: any[] = [];
 
+    if (license.type == LicenseTypes.CONTRACT_PERPETUAL) {
+      contractName = "PerpetualLicense";
+      parameters = [
+        license.company!,
+        license.name,
+        license.metadata,
+        license.price,
+        "1",
+      ];
+    } else if (license.type == LicenseTypes.CONTRACT_FIXED_SUBSCRIPTION) {
+      contractName = "FixedSubscription";
+      parameters = [
+        license.company!,
+        license.name,
+        license.metadata,
+        license.price,
+        license.subscriptionPeriod!,
+      ];
+    } else if (license.type == LicenseTypes.CONTRACT_AUTO_RENEW_SUBSCRIPTION) {
+      contractName = "AutoRenewTokenSubscriptionLicense";
+      parameters = [
+        license.company!,
+        license.name,
+        license.metadata,
+        license.paymentToken!,
+        license.price,
+        license.subscriptionPeriod!,
+        "1",
+      ];
+    } else {
+      throw new ValidationError(
+        "Invalid license type",
+        ErrorCode.INVALID_LICENSE
+      );
+    }
+
+    const adminPrivateKey = await SysConfig.getSysConfigStr(
+      "Admin_Private_key"
+    );
     const address = await blockchain.deployContract(
-      license.contract!.name,
-      "43a060fe31e2999f873a259d1734194d4006f3e6ca5fee56d20118b9138e6638", //account 5
-      [license.company!, license.name, license.price, "1"]
+      contractName,
+      adminPrivateKey, //account 5
+      parameters
     );
 
     license.contract!.address = address;
@@ -89,7 +125,7 @@ export namespace LicenseAdapter {
       contractAddress,
       licensePurchaseInput.address
     );
-    license.type = LicenseTypes.TOKEN_PERPETUAL;
+    license.type = LicenseTypes.CONTRACT_PERPETUAL;
     license.token = { contract: contractAddress };
     license.owner = licensePurchaseInput.address;
     license.id = uuid();

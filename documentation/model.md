@@ -7,20 +7,18 @@ License represents a both license contract and end user license token or end use
 ```
 {
         "id": "db040c31-8694-4d37-aab4-75c26326e954",
-        "company": "Google",
+        "company": "Microsoft",
         "contract": {
             "address": "0x26daFAC779d8434CD339682d3550e4815c98AB4D",
-            "blockchain": "ETHEREUM",
-            "name": "PerpetualLicense",
-            "royalty": "0.01",
-            "type": "PERPETUAL"
+            "blockchain": "ETHEREUM"
         },
         "description": "Premimum package for the microsoft office 2003. License valid",
         "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
         "name": "Microsoft Office - Premimum",
         "owner": "0x0c81414f8545522A0C97A39F83700De8230825b6",
         "price": "10000000000000000",
-        "software": "c2186403-5a6a-4fb7-90a6-543d7bba7784",
+        "metadata":"https://ipfs.io/ipfs/QmZmX5iTJc3C98dbkwrHMJsTGATduYNHCUmqpz7t4iSQpW",
+        "software": "Microsoft Office",
         "status": "ACTIVE",
         "type": "CONTRACT_PERPETUAL"
     }
@@ -29,37 +27,52 @@ License represents a both license contract and end user license token or end use
 ```
 {
         "id": "db040c31-8694-4d37-aab4-75c26326e954",
-        "company": "Google",
+        "company": "Microsoft",
         "contract": {
             "address": "0x26daFAC779d8434CD339682d3550e4815c98AB4D",
-            "blockchain": "ETHEREUM",
-            "name": "PerpetualLicense",
-            "royalty": "0.01",
-            "type": "PERPETUAL"
+            "blockchain": "ETHEREUM"
         },
         "description": "Premimum package for the microsoft office 2003. License valid",
         "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
         "name": "Microsoft Office - Premimum",
         "owner": "0x0c81414f8545522A0C97A39F83700De8230825b6",
         "price": "10000000000000000",
-        "software": "c2186403-5a6a-4fb7-90a6-543d7bba7784",
+        "metadata":"https://ipfs.io/ipfs/QmZmX5iTJc3C98dbkwrHMJsTGATduYNHCUmqpz7t4iSQpW",
+        "software": "Microsoft Office",
         "status": "ACTIVE",
-        "type": "TOKEN_PERPETUAL",
-        "token": {
-                "id": 123,
-                "contract": "0x26daFAC779d8434CD339682d3550e4815c98AB4D"
-        },
+        "type": "CONTRACT_FIXED_SUBSCRIPTION",
+        "subscriptionPeriod": "1000",
+    }
+```
 
-}
+```
+{
+        "id": "db040c31-8694-4d37-aab4-75c26326e954",
+        "company": "Microsoft",
+        "contract": {
+            "address": "0x26daFAC779d8434CD339682d3550e4815c98AB4D",
+            "blockchain": "ETHEREUM"
+        },
+        "description": "Premimum package for the microsoft office 2003. License valid",
+        "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
+        "name": "Microsoft Office - Premimum",
+        "owner": "0x0c81414f8545522A0C97A39F83700De8230825b6",
+        "price": "10000000000000000",
+        "metadata":"https://ipfs.io/ipfs/QmZmX5iTJc3C98dbkwrHMJsTGATduYNHCUmqpz7t4iSQpW",
+        "software": "Microsoft Office",
+        "status": "ACTIVE",
+        "type": "CONTRACT_FIXED_SUBSCRIPTION",
+        "subscriptionPeriod": "1000",
+        "paymentToken": "1000",
+    }
 ```
 
 - `id` (uuidv4, immutable) is a unique identifier for the license within the system.
 - `software` (uuidv4, optional) is the id of the software that the license belongs to.
 - `type` (string, enum) represents the type of the license. Possible values are;
   - CONTRACT_PERPETUAL - license is a contract of perpetual license
-  - CONTRACT_SUBSCRIPTION - license is a contract to create subscription
-  - TOKEN_PERPETUAL - End User license token which minted
-  - TOKEN_SUBSCRIPTION - End User Subscription
+  - CONTRACT_FIXED_SUBSCRIPTION - license is a contract to create fixed subscription
+  - CONTRACT_AUTO_RENEW_SUBSCRIPTION - license is a contract to create auto renew subscription
 - `name` (string) is the name of the license.
 - `price` (string) price of the license in wei.
 - `description` (string) is a description of the license.
@@ -67,20 +80,13 @@ License represents a both license contract and end user license token or end use
 - `status` (string, enum) represents the current status of the license. Possible values are;
   - ACTIVE - License is active and should be visible to customers
   - INACTIVE - License is inactive and should not be visible to customers
-- `owner` (uuidv4, immutable) is the id of the user that owns the license.
+- `owner` (address) is the id of the user that owns the license.
+- `metadata` (string,url) ipfs link of the license contract.
+- `subscriptionPeriod` (string, optional) subscription period in seconds for subscription type of license.
+- `paymentToken` (address, optional) payment token for auto renew subscription.
 - `contract` (object, optional) represents the contract associated with this license. It has the following properties.
   - `blockchain` (string, enum) is the blockchain hosting the contract. Possible values are;
     - ETHEREUM - Ethereum
-  - `address` (string, address) is the address of the contract.
-  - `type` (string, enum) is the type of the contract. Possible values are;
-    - PERPETUAL
-    - SUBSCRIPTION
-  - `name` (object) license name in the store.
-- `token` (object, optional) represents the minted token (if any) associated with the license.
-  - `id` (number) is the token id within the contract for the token.
-  - `address` (string, address) is the address of the contract.
-- `token` (object, optional) represents the subscription associated with the license.
-  - `id` (number) is the subscription id within the contract.
   - `address` (string, address) is the address of the contract.
 
 ## Software
