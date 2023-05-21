@@ -20,22 +20,22 @@ export class BlockChain {
       switch (blockchain) {
         case Blockchain.ETHEREUM:
           this.nodeUrl =
-            "https://eth-goerli.g.alchemy.com/v2/wLpA-TL3WxjCfKMfTcaxJQ7fL6MIQ1mP";
+            "https://eth-sepolia.g.alchemy.com/v2/by1trNTlFI3duvE9djbUXgTfE9O6QPed";
           this.web3 = new Web3(new Web3.providers.HttpProvider(this.nodeUrl));
           break;
         case Blockchain.POLYGON:
         case Blockchain.BSC:
           this.nodeUrl =
-            "https://eth-goerli.g.alchemy.com/v2/wLpA-TL3WxjCfKMfTcaxJQ7fL6MIQ1mP";
+            "https://eth-sepolia.g.alchemy.com/v2/by1trNTlFI3duvE9djbUXgTfE9O6QPed";
           break;
         default:
           this.nodeUrl =
-            "https://eth-goerli.g.alchemy.com/v2/wLpA-TL3WxjCfKMfTcaxJQ7fL6MIQ1mP";
+            "https://eth-sepolia.g.alchemy.com/v2/by1trNTlFI3duvE9djbUXgTfE9O6QPed";
           this.web3 = new Web3(new Web3.providers.HttpProvider(this.nodeUrl));
           return;
       }
       this.nodeUrl =
-        "https://eth-goerli.g.alchemy.com/v2/wLpA-TL3WxjCfKMfTcaxJQ7fL6MIQ1mP";
+        "https://eth-sepolia.g.alchemy.com/v2/by1trNTlFI3duvE9djbUXgTfE9O6QPed";
       this.web3 = new Web3(new Web3.providers.HttpProvider(this.nodeUrl));
     } catch (e) {
       throw new ValidationError(`blockchain not connected ${e}`);
@@ -105,9 +105,14 @@ export class BlockChain {
         data: transaction.encodeABI(),
         from: account.address,
       };
+      const sepoliaCommon = Common.custom({
+        name: "sepolia",
+        chainId: 11155111,
+        networkId: 11155111, // replace with the correct hardfork
+      });
 
       let txoption: TxOptions = {
-        common: new Common({ chain: "goerli" }),
+        common: sepoliaCommon,
       };
 
       let tx = new Transaction(rawTx, txoption);
@@ -171,8 +176,14 @@ export class BlockChain {
         to: contractAddress,
       };
 
+      const sepoliaCommon = Common.custom({
+        name: "sepolia",
+        chainId: 11155111,
+        networkId: 11155111, // replace with the correct hardfork
+      });
+
       let txoption: TxOptions = {
-        common: new Common({ chain: "goerli" }),
+        common: sepoliaCommon,
       };
       let tx = new Transaction(rawTx, txoption);
 
@@ -242,8 +253,14 @@ export class BlockChain {
         to: ActivationContractAddress,
       };
 
+      const sepoliaCommon = Common.custom({
+        name: "sepolia",
+        chainId: 11155111,
+        networkId: 11155111, // replace with the correct hardfork
+      });
+
       let txoption: TxOptions = {
-        common: new Common({ chain: "goerli" }),
+        common: sepoliaCommon,
       };
       let tx = new Transaction(rawTx, txoption);
 
@@ -302,8 +319,14 @@ export class BlockChain {
       from: account.address,
     };
 
+    const sepoliaCommon = Common.custom({
+      name: "sepolia",
+      chainId: 11155111,
+      networkId: 11155111, // replace with the correct hardfork
+    });
+
     let txoption: TxOptions = {
-      common: new Common({ chain: "goerli" }),
+      common: sepoliaCommon,
     };
 
     let tx = new Transaction(rawTx, txoption);
