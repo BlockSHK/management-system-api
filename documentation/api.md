@@ -18,6 +18,86 @@ Error
 
 ## License
 
+**POST** `/query/license`
+
+Request - Query All
+
+```
+{
+    "offset": <offset>,
+    "limit": <limit>
+}
+```
+
+Request - Query by License Id
+
+```
+{
+    "offset": <offset>,
+    "limit": <limit>,
+    "filter": {
+        "id": "e5a3sdfc-3b19-4856-9df9-12f30de47f1d"
+    }
+}
+```
+
+Request - Query by Software Id
+
+```
+{
+    "offset": <offset>,
+    "limit": <limit>,
+    "filter": {
+        "software": "sdfs7740-3f44-4238-a834-4606621b6ba6"
+    }
+}
+```
+
+- `offset` (object, optional) is used for specifying the starting record offset for paginated queries (default is 0).
+
+  - `id` (uuidv4) license identifier of the last queried license.
+  - `software` (uuidv4) software identifier of the last queried license.
+
+- `limit` (number, optional) is used for limiting the number of records in the result set for paginated queries (default is 100).
+- `filter` (object, optional) specifies record filter criteria. Possible filter criteria are;
+  - `id` (uuidv4) filters license by matching license identifier.
+  - `software` (uuidv4) filters license by matching software identifier.
+  - `owner` (uuidv4) filters license by matching owner identifier.
+
+Response
+
+```
+{
+    "count": <record-count>,
+    "offset": <first-record-offset>,
+    "limit": <record-limit>,
+    "records": [
+    {
+        "id": "30d069d1-26be-47cb-8ea8-9df3fb602c92",
+        "software": "c2186403-5a6a-4fb7-90a6-543d7bba7784",
+        "type": "CONTRACT_PERPETUAL",
+        "name": "Microsoft Office - Premimum",
+        "description": "Premimum package for the microsoft office 2003. License valid",
+        "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
+        "status": "ACTIVE",
+        "company": "Google",
+        "price": "10000000000000000",
+        "owner": "0xAa62006DcB8Ea5e90Ec241FA33768aa8c4887a34"
+    },
+        ...
+    ]
+}
+```
+
+- `count` is the total number of records (without applying pagination limits).
+- `offset` is the record offset of the first record in the returned results.
+  - `id` (uuidv4) license identifier.
+  - `software` (uuidv4) software identifier.
+- `limit` is the limit applied to trim records in the returned results.
+- `records` is the list of matching results. Each record has the structure of an license as described in the data model.
+
+Note that by default the license in the result set are sorted by `name` (ascending).
+
 **POST** `/create`
 
 Request

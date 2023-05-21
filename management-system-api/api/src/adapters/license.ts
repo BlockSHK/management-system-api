@@ -6,6 +6,31 @@ import { uuid } from "uuidv4";
 import { BlockChain } from "../core/blockchain/blockchain";
 import { SysConfig } from "../core/entities/systemConfig";
 export namespace LicenseAdapter {
+  export async function search(licenseQuery: apiInput.LicenseQuery) {
+    let dyResponse;
+
+    const licenseHandler = new License();
+    const indexKeys = licenseHandler.getIndexKeys();
+
+    if (licenseQuery.filter) {
+      const keys = Object.keys(licenseQuery.filter);
+      if (keys.length == 1 && indexKeys.includes(keys[0])) {
+        dyResponse = await licenseHandler.queryLicense(licenseQuery);
+      } else {
+        dyResponse = await licenseHandler.scanLicense(licenseQuery);
+      }
+    } else {
+      dyResponse = await licenseHandler.scanLicense(licenseQuery);
+    }
+
+    return {
+      count: dyResponse.Count,
+      offset: dyResponse.LastEvaluatedKey,
+      limit: licenseQuery.limit!,
+      records: dyResponse.Items,
+    };
+  }
+
   export async function create(licenseInput: apiInput.LicenseInput) {
     const licenseId = uuid();
 

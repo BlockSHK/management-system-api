@@ -68,6 +68,7 @@ export namespace internal {
 }
 
 export namespace apiInput {
+  import Query = internal.DBQuery;
   export interface LicenseInput {
     software: string;
     type: LicenseTypes;
@@ -80,6 +81,13 @@ export namespace apiInput {
     owner: string;
     subscriptionPeriod?: number;
     paymentToken?: string;
+  }
+  export interface LicenseQuery extends Query {
+    filter?: {
+      id?: string;
+      software?: string;
+      owner?: string;
+    };
   }
   export interface LicenseUpdate extends LicenseInput {
     status: LicenseStatus;
@@ -110,7 +118,12 @@ export namespace apiOutput {
     WRONG_REQUEST_TYPE = "WRONG_REQUEST_TYPE",
     AUTH_FAILURE = "AUTH_FAILURE",
   }
-
+  export interface QueryResponse {
+    count: number;
+    offset: any;
+    limit: number;
+    records: internal.License[];
+  }
   export interface NonceResponse {
     address: string;
     nonce: string;
