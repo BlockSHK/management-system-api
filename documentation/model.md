@@ -63,7 +63,7 @@ License represents a both license contract and end user license token or end use
         "status": "ACTIVE",
         "type": "CONTRACT_FIXED_SUBSCRIPTION",
         "subscriptionPeriod": "1000",
-        "paymentToken": "1000",
+        "paymentToken": "0x0c81414f8545522A0C97A39F83700De8230825b6",
     }
 ```
 
