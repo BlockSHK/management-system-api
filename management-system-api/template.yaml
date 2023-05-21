@@ -142,7 +142,8 @@ Resources:
           AttributeType: "S"
         - AttributeName: "software"
           AttributeType: "S"
-
+        - AttributeName: "owner"
+          AttributeType: "S"
       KeySchema:
         - AttributeName: "id"
           KeyType: "HASH"
@@ -153,6 +154,15 @@ Resources:
         - IndexName: software-index
           KeySchema:
             - AttributeName: "software"
+              KeyType: "HASH"
+          Projection:
+            ProjectionType: ALL
+          ProvisionedThroughput:
+            ReadCapacityUnits: 1
+            WriteCapacityUnits: 1
+        - IndexName: owner-index
+          KeySchema:
+            - AttributeName: "owner"
               KeyType: "HASH"
           Projection:
             ProjectionType: ALL
