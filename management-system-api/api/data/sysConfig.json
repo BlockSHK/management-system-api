@@ -11,7 +11,18 @@
       }
     }
   },
-
+  {
+    "PutRequest": {
+      "Item": {
+        "config": {
+          "S": "sepolia_node"
+        },
+        "value": {
+          "S": "https://eth-sepolia.g.alchemy.com/v2/by1trNTlFI3duvE9djbUXgTfE9O6QPed"
+        }
+      }
+    }
+  },
   {
     "PutRequest": {
       "Item": {
