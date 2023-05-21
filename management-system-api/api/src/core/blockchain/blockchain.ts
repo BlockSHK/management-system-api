@@ -79,7 +79,7 @@ export class BlockChain {
 
       let ActivationContractAddress = "";
       if (contractName == "PerpetualLicense") {
-        let ActivationContractAddress = await this.deployActivationContract(
+        ActivationContractAddress = await this.deployActivationContract(
           privateKey
         );
         properties.push(ActivationContractAddress);
@@ -122,7 +122,11 @@ export class BlockChain {
         "0x" + serializedTx.toString("hex")
       );
       let contractAddress = response.contractAddress!;
-
+      console.log("In the deploy contractAddress Perpetual", contractAddress);
+      console.log(
+        "In the deploy contractAddress Activation",
+        ActivationContractAddress
+      );
       if (contractName == "PerpetualLicense") {
         let response = await this.updateActivationContract(
           ActivationContractAddress,
@@ -222,6 +226,14 @@ export class BlockChain {
     privateKey: string
   ) {
     try {
+      console.log(
+        "updateActivation Contract ActivationContractAddress",
+        ActivationContractAddress
+      );
+      console.log(
+        "updateActivation Contract LicenseContractAddress",
+        LicenseContractAddress
+      );
       const abi = await util.getContract(
         "LicenseActivation",
         ContractFileType.ABI
@@ -336,6 +348,7 @@ export class BlockChain {
       "0x" + serializedTx.toString("hex")
     );
     let contractAddress = response.contractAddress!;
+    console.log("In the deploy ActivationContractAddress", contractAddress);
     return contractAddress;
   }
   public async getTokenOwner(
