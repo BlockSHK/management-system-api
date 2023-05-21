@@ -20,22 +20,22 @@ export class BlockChain {
       switch (blockchain) {
         case Blockchain.ETHEREUM:
           this.nodeUrl =
-            "https://eth-goerli.g.alchemy.com/v2/wLpA-TL3WxjCfKMfTcaxJQ7fL6MIQ1mP";
+            "https://eth-sepolia.g.alchemy.com/v2/by1trNTlFI3duvE9djbUXgTfE9O6QPed";
           this.web3 = new Web3(new Web3.providers.HttpProvider(this.nodeUrl));
           break;
         case Blockchain.POLYGON:
         case Blockchain.BSC:
           this.nodeUrl =
-            "https://eth-goerli.g.alchemy.com/v2/wLpA-TL3WxjCfKMfTcaxJQ7fL6MIQ1mP";
+            "https://eth-sepolia.g.alchemy.com/v2/by1trNTlFI3duvE9djbUXgTfE9O6QPed";
           break;
         default:
           this.nodeUrl =
-            "https://eth-goerli.g.alchemy.com/v2/wLpA-TL3WxjCfKMfTcaxJQ7fL6MIQ1mP";
+            "https://eth-sepolia.g.alchemy.com/v2/by1trNTlFI3duvE9djbUXgTfE9O6QPed";
           this.web3 = new Web3(new Web3.providers.HttpProvider(this.nodeUrl));
           return;
       }
       this.nodeUrl =
-        "https://eth-goerli.g.alchemy.com/v2/wLpA-TL3WxjCfKMfTcaxJQ7fL6MIQ1mP";
+        "https://eth-sepolia.g.alchemy.com/v2/by1trNTlFI3duvE9djbUXgTfE9O6QPed";
       this.web3 = new Web3(new Web3.providers.HttpProvider(this.nodeUrl));
     } catch (e) {
       throw new ValidationError(`blockchain not connected ${e}`);
@@ -107,7 +107,7 @@ export class BlockChain {
       };
 
       let txoption: TxOptions = {
-        common: new Common({ chain: "goerli" }),
+        common: new Common({ chain: "sepolia" }),
       };
 
       let tx = new Transaction(rawTx, txoption);
@@ -172,7 +172,7 @@ export class BlockChain {
       };
 
       let txoption: TxOptions = {
-        common: new Common({ chain: "goerli" }),
+        common: new Common({ chain: "sepolia" }),
       };
       let tx = new Transaction(rawTx, txoption);
 
@@ -243,7 +243,7 @@ export class BlockChain {
       };
 
       let txoption: TxOptions = {
-        common: new Common({ chain: "goerli" }),
+        common: new Common({ chain: "sepolia" }),
       };
       let tx = new Transaction(rawTx, txoption);
 
@@ -303,7 +303,7 @@ export class BlockChain {
     };
 
     let txoption: TxOptions = {
-      common: new Common({ chain: "goerli" }),
+      common: new Common({ chain: "sepolia" }),
     };
 
     let tx = new Transaction(rawTx, txoption);
