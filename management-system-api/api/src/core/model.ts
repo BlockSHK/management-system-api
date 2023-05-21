@@ -86,6 +86,7 @@ export namespace apiInput {
     filter?: {
       id?: string;
       software?: string;
+      owner?: string;
     };
   }
   export interface LicenseUpdate extends LicenseInput {

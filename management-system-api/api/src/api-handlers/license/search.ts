@@ -28,7 +28,7 @@ export const handler = async (
     console.log("Response : ", JSON.stringify(response));
     return apiUtil.get200(event.headers, response);
   } catch (error) {
-    console.error("Error during querying assets.", error);
+    console.error("Error during querying license.", error);
     if (error instanceof ValidationError) {
       return apiUtil.get200BusinessReject(
         event.headers,
@@ -38,7 +38,7 @@ export const handler = async (
     }
     return apiUtil.get500(
       event.headers,
-      `Error during querying assets ${error}`
+      `Error during querying license ${error}`
     );
   }
 };

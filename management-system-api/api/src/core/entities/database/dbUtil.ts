@@ -11,7 +11,11 @@ export interface DBUtil {
     primaryKey?: any,
     indexKey?: string
   ): Promise<any>;
-  scanTable(tableName: string, query: internal.DBQuery): Promise<any>;
+  scanTable(
+    tableName: string,
+    query: internal.DBQuery,
+    filterAttributes?: { key: string; value: any }[]
+  ): Promise<any>;
 
   // insert/update functions
   writeOneToDB(tableName: string, item: any): Promise<any>;
