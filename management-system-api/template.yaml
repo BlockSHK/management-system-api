@@ -16,6 +16,28 @@ Globals:
       AllowMethods: "'OPTIONS,GET,PUT,POST,DELETE'"
 
 Resources:
+  LicenseQueryFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "blockshk-management-system-QueryLicenseHandler"
+      CodeUri: api/
+      Handler: lib/api-handlers/license/search.handler
+      Runtime: nodejs14.x
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref LicenseTable
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SysConfigsTable
+      Environment:
+        Variables:
+          LICENSE_TABLE_NAME: !Ref LicenseTable
+
+      Events:
+        Contract:
+          Type: Api
+          Properties:
+            Path: /query/license
+            Method: post
   LicenseDeployFunction:
     Type: AWS::Serverless::Function
     Properties:
