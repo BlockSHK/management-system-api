@@ -1,382 +1,406 @@
 {
-	"info": {
-		"_postman_id": "6ba963c3-851e-410d-a477-d5df68227c94",
-		"name": "License Managment API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "14149197"
-	},
-	"item": [
-		{
-			"name": "Nonce Request",
-			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": [
-						{
-							"key": "sessionToken",
-							"value": "{{Session Token}}",
-							"type": "string"
-						},
-						{
-							"key": "service",
-							"value": "{{Service Name}}",
-							"type": "string"
-						},
-						{
-							"key": "region",
-							"value": "{{AWS Region}}",
-							"type": "string"
-						},
-						{
-							"key": "secretKey",
-							"value": "{{SecretKey}}",
-							"type": "string"
-						},
-						{
-							"key": "accessKey",
-							"value": "{{AccessKey}}",
-							"type": "string"
-						},
-						{
-							"key": "addAuthDataToQuery",
-							"value": false,
-							"type": "boolean"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n        \"address\": \"0x0c81414f8545522A0C97A39F83700De8230825b6\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseURI}}/Stage/activation/nonce",
-					"host": [
-						"{{baseURI}}"
-					],
-					"path": [
-						"Stage",
-						"activation",
-						"nonce"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Token Activation",
-			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": [
-						{
-							"key": "sessionToken",
-							"value": "{{Session Token}}",
-							"type": "string"
-						},
-						{
-							"key": "service",
-							"value": "{{Service Name}}",
-							"type": "string"
-						},
-						{
-							"key": "region",
-							"value": "{{AWS Region}}",
-							"type": "string"
-						},
-						{
-							"key": "secretKey",
-							"value": "{{SecretKey}}",
-							"type": "string"
-						},
-						{
-							"key": "accessKey",
-							"value": "{{AccessKey}}",
-							"type": "string"
-						},
-						{
-							"key": "addAuthDataToQuery",
-							"value": false,
-							"type": "boolean"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n        \"nonce\": \"a22c66ebd2c37678926a119b969d9f9d\",\n        \"address\": \"0x0c81414f8545522A0C97A39F83700De8230825b6\",\n        \"contract\":\"0x26daFAC779d8434CD339682d3550e4815c98AB4D\",\n        \"tokenId\":\"1\",\n        \"sign\":\"0x4bb333ca5d9336c00a02841672c9d15c1573a99b60d3f82580a6e25d44d4da214d933c1f807ae9b8c47d173f4c428bc29a3bbd015b09151c81c7e2eae51ac4e81c\"\n\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseURI}}/Stage/activation/activate",
-					"host": [
-						"{{baseURI}}"
-					],
-					"path": [
-						"Stage",
-						"activation",
-						"activate"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create License",
-			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": [
-						{
-							"key": "accessKey",
-							"value": "{{AccessKey}}",
-							"type": "string"
-						},
-						{
-							"key": "secretKey",
-							"value": "{{SecretKey}}",
-							"type": "string"
-						},
-						{
-							"key": "sessionToken",
-							"value": "{{Session Token}}",
-							"type": "string"
-						},
-						{
-							"key": "service",
-							"value": "{{Service Name}}",
-							"type": "string"
-						},
-						{
-							"key": "region",
-							"value": "{{AWS Region}}",
-							"type": "string"
-						},
-						{
-							"key": "addAuthDataToQuery",
-							"value": false,
-							"type": "boolean"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n        \"id\": \"30d069d1-26be-47cb-8ea8-9df3fb602c92\",\n        \"software\": \"c2186403-5a6a-4fb7-90a6-543d7bba7784\",\n        \"type\": \"CONTRACT\",\n        \"name\": \"Microsoft Office - Premimum\",\n        \"description\": \"Premimum package for the microsoft office 2003. License valid\",\n        \"image\": \"https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg\",\n        \"status\": \"ACTIVE\",\n        \"company\": \"Google\",\n        \"price\": \"10000000000000000\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseURI}}/Stage/create",
-					"host": [
-						"{{baseURI}}"
-					],
-					"path": [
-						"Stage",
-						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Deploy License",
-			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": [
-						{
-							"key": "sessionToken",
-							"value": "{{Session Token}}",
-							"type": "string"
-						},
-						{
-							"key": "service",
-							"value": "{{Service Name}}",
-							"type": "string"
-						},
-						{
-							"key": "region",
-							"value": "{{AWS Region}}",
-							"type": "string"
-						},
-						{
-							"key": "secretKey",
-							"value": "{{SecretKey}}",
-							"type": "string"
-						},
-						{
-							"key": "accessKey",
-							"value": "{{AccessKey}}",
-							"type": "string"
-						},
-						{
-							"key": "addAuthDataToQuery",
-							"value": false,
-							"type": "boolean"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n        \"id\": \"30d069d1-26be-47cb-8ea8-9df3fb602c92\",\n        \"software\": \"c2186403-5a6a-4fb7-90a6-543d7bba7784\",\n        \"type\": \"CONTRACT\",\n        \"name\": \"Microsoft Office - Premimum\",\n        \"description\": \"Premimum package for the microsoft office 2003. License valid\",\n        \"image\": \"https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg\",\n        \"status\": \"ACTIVE\",\n        \"company\": \"Google\",\n        \"price\": \"10000000000000000\",\n        \"owner\": \"0xAa62006DcB8Ea5e90Ec241FA33768aa8c4887a34\",\n        \"contract\": {\n            \"name\": \"PerpetualLicense\",\n            \"blockchain\": \"ETHEREUM\",\n            \"type\": \"PERPETUAL\",\n            \"royalty\": \"0.01\"\n        }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseURI}}/Stage/deploy/:id",
-					"host": [
-						"{{baseURI}}"
-					],
-					"path": [
-						"Stage",
-						"deploy",
-						":id"
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "30d069d1-26be-47cb-8ea8-9df3fb602c92"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Purchase License",
-			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": [
-						{
-							"key": "sessionToken",
-							"value": "{{Session Token}}",
-							"type": "string"
-						},
-						{
-							"key": "service",
-							"value": "{{Service Name}}",
-							"type": "string"
-						},
-						{
-							"key": "region",
-							"value": "{{AWS Region}}",
-							"type": "string"
-						},
-						{
-							"key": "secretKey",
-							"value": "{{SecretKey}}",
-							"type": "string"
-						},
-						{
-							"key": "accessKey",
-							"value": "{{AccessKey}}",
-							"type": "string"
-						},
-						{
-							"key": "addAuthDataToQuery",
-							"value": false,
-							"type": "boolean"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n        \"address\": \"0x0c81414f8545522A0C97A39F83700De8230825b6\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseURI}}/Stage/purchase/:id",
-					"host": [
-						"{{baseURI}}"
-					],
-					"path": [
-						"Stage",
-						"purchase",
-						":id"
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": "30d069d1-26be-47cb-8ea8-9df3fb602c92"
-						}
-					]
-				}
-			},
-			"response": []
-		}
-	],
-	"event": [
-		{
-			"listen": "prerequest",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		},
-		{
-			"listen": "test",
-			"script": {
-				"type": "text/javascript",
-				"exec": [
-					""
-				]
-			}
-		}
-	],
-	"variable": [
-		{
-			"key": "baseURI",
-			"value": "https://b1r5aq31x2.execute-api.us-east-1.amazonaws.com"
-		},
-		{
-			"key": "AWS Region",
-			"value": "----"
-		},
-		{
-			"key": "Service Name",
-			"value": "----"
-		},
-		{
-			"key": "Session Token",
-			"value": "----"
-		},
-		{
-			"key": "SecretKey",
-			"value": "----"
-		},
-		{
-			"key": "AccessKey",
-			"value": "----"
-		}
-	]
+  "info": {
+    "_postman_id": "6ba963c3-851e-410d-a477-d5df68227c94",
+    "name": "License Managment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "14149197"
+  },
+  "item": [
+    {
+      "name": "Nonce Request",
+      "request": {
+        "auth": {
+          "type": "awsv4",
+          "awsv4": [
+            {
+              "key": "sessionToken",
+              "value": "{{Session Token}}",
+              "type": "string"
+            },
+            {
+              "key": "service",
+              "value": "{{Service Name}}",
+              "type": "string"
+            },
+            {
+              "key": "region",
+              "value": "{{AWS Region}}",
+              "type": "string"
+            },
+            {
+              "key": "secretKey",
+              "value": "{{SecretKey}}",
+              "type": "string"
+            },
+            {
+              "key": "accessKey",
+              "value": "{{AccessKey}}",
+              "type": "string"
+            },
+            {
+              "key": "addAuthDataToQuery",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n        \"address\": \"0x0c81414f8545522A0C97A39F83700De8230825b6\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURI}}/Stage/activation/nonce",
+          "host": ["{{baseURI}}"],
+          "path": ["Stage", "activation", "nonce"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Query Request",
+      "request": {
+        "auth": {
+          "type": "awsv4",
+          "awsv4": [
+            {
+              "key": "sessionToken",
+              "value": "{{Session Token}}",
+              "type": "string"
+            },
+            {
+              "key": "service",
+              "value": "{{Service Name}}",
+              "type": "string"
+            },
+            {
+              "key": "region",
+              "value": "{{AWS Region}}",
+              "type": "string"
+            },
+            {
+              "key": "secretKey",
+              "value": "{{SecretKey}}",
+              "type": "string"
+            },
+            {
+              "key": "accessKey",
+              "value": "{{AccessKey}}",
+              "type": "string"
+            },
+            {
+              "key": "addAuthDataToQuery",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n        \"address\": \"0x0c81414f8545522A0C97A39F83700De8230825b6\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURI}}/Stage/activation/nonce",
+          "host": ["{{baseURI}}"],
+          "path": ["Stage", "activation", "nonce"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Token Activation",
+      "request": {
+        "auth": {
+          "type": "awsv4",
+          "awsv4": [
+            {
+              "key": "sessionToken",
+              "value": "{{Session Token}}",
+              "type": "string"
+            },
+            {
+              "key": "service",
+              "value": "{{Service Name}}",
+              "type": "string"
+            },
+            {
+              "key": "region",
+              "value": "{{AWS Region}}",
+              "type": "string"
+            },
+            {
+              "key": "secretKey",
+              "value": "{{SecretKey}}",
+              "type": "string"
+            },
+            {
+              "key": "accessKey",
+              "value": "{{AccessKey}}",
+              "type": "string"
+            },
+            {
+              "key": "addAuthDataToQuery",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n        \"nonce\": \"a22c66ebd2c37678926a119b969d9f9d\",\n        \"address\": \"0x0c81414f8545522A0C97A39F83700De8230825b6\",\n        \"contract\":\"0x26daFAC779d8434CD339682d3550e4815c98AB4D\",\n        \"tokenId\":\"1\",\n        \"sign\":\"0x4bb333ca5d9336c00a02841672c9d15c1573a99b60d3f82580a6e25d44d4da214d933c1f807ae9b8c47d173f4c428bc29a3bbd015b09151c81c7e2eae51ac4e81c\"\n\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURI}}/Stage/activation/activate",
+          "host": ["{{baseURI}}"],
+          "path": ["Stage", "activation", "activate"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create License",
+      "request": {
+        "auth": {
+          "type": "awsv4",
+          "awsv4": [
+            {
+              "key": "accessKey",
+              "value": "{{AccessKey}}",
+              "type": "string"
+            },
+            {
+              "key": "secretKey",
+              "value": "{{SecretKey}}",
+              "type": "string"
+            },
+            {
+              "key": "sessionToken",
+              "value": "{{Session Token}}",
+              "type": "string"
+            },
+            {
+              "key": "service",
+              "value": "{{Service Name}}",
+              "type": "string"
+            },
+            {
+              "key": "region",
+              "value": "{{AWS Region}}",
+              "type": "string"
+            },
+            {
+              "key": "addAuthDataToQuery",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n        \"id\": \"30d069d1-26be-47cb-8ea8-9df3fb602c92\",\n        \"software\": \"c2186403-5a6a-4fb7-90a6-543d7bba7784\",\n        \"type\": \"CONTRACT\",\n        \"name\": \"Microsoft Office - Premimum\",\n        \"description\": \"Premimum package for the microsoft office 2003. License valid\",\n        \"image\": \"https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg\",\n        \"status\": \"ACTIVE\",\n        \"company\": \"Google\",\n        \"price\": \"10000000000000000\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURI}}/Stage/create",
+          "host": ["{{baseURI}}"],
+          "path": ["Stage", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Deploy License",
+      "request": {
+        "auth": {
+          "type": "awsv4",
+          "awsv4": [
+            {
+              "key": "sessionToken",
+              "value": "{{Session Token}}",
+              "type": "string"
+            },
+            {
+              "key": "service",
+              "value": "{{Service Name}}",
+              "type": "string"
+            },
+            {
+              "key": "region",
+              "value": "{{AWS Region}}",
+              "type": "string"
+            },
+            {
+              "key": "secretKey",
+              "value": "{{SecretKey}}",
+              "type": "string"
+            },
+            {
+              "key": "accessKey",
+              "value": "{{AccessKey}}",
+              "type": "string"
+            },
+            {
+              "key": "addAuthDataToQuery",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n        \"id\": \"30d069d1-26be-47cb-8ea8-9df3fb602c92\",\n        \"software\": \"c2186403-5a6a-4fb7-90a6-543d7bba7784\",\n        \"type\": \"CONTRACT\",\n        \"name\": \"Microsoft Office - Premimum\",\n        \"description\": \"Premimum package for the microsoft office 2003. License valid\",\n        \"image\": \"https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg\",\n        \"status\": \"ACTIVE\",\n        \"company\": \"Google\",\n        \"price\": \"10000000000000000\",\n        \"owner\": \"0xAa62006DcB8Ea5e90Ec241FA33768aa8c4887a34\",\n        \"contract\": {\n            \"name\": \"PerpetualLicense\",\n            \"blockchain\": \"ETHEREUM\",\n            \"type\": \"PERPETUAL\",\n            \"royalty\": \"0.01\"\n        }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURI}}/Stage/deploy/:id",
+          "host": ["{{baseURI}}"],
+          "path": ["Stage", "deploy", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "30d069d1-26be-47cb-8ea8-9df3fb602c92"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Purchase License",
+      "request": {
+        "auth": {
+          "type": "awsv4",
+          "awsv4": [
+            {
+              "key": "sessionToken",
+              "value": "{{Session Token}}",
+              "type": "string"
+            },
+            {
+              "key": "service",
+              "value": "{{Service Name}}",
+              "type": "string"
+            },
+            {
+              "key": "region",
+              "value": "{{AWS Region}}",
+              "type": "string"
+            },
+            {
+              "key": "secretKey",
+              "value": "{{SecretKey}}",
+              "type": "string"
+            },
+            {
+              "key": "accessKey",
+              "value": "{{AccessKey}}",
+              "type": "string"
+            },
+            {
+              "key": "addAuthDataToQuery",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n        \"address\": \"0x0c81414f8545522A0C97A39F83700De8230825b6\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURI}}/Stage/purchase/:id",
+          "host": ["{{baseURI}}"],
+          "path": ["Stage", "purchase", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "30d069d1-26be-47cb-8ea8-9df3fb602c92"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseURI",
+      "value": "https://b1r5aq31x2.execute-api.us-east-1.amazonaws.com"
+    },
+    {
+      "key": "AWS Region",
+      "value": "----"
+    },
+    {
+      "key": "Service Name",
+      "value": "----"
+    },
+    {
+      "key": "Session Token",
+      "value": "----"
+    },
+    {
+      "key": "SecretKey",
+      "value": "----"
+    },
+    {
+      "key": "AccessKey",
+      "value": "----"
+    }
+  ]
 }
