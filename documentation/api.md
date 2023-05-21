@@ -91,12 +91,12 @@ Response
 
 - `count` is the total number of records (without applying pagination limits).
 - `offset` is the record offset of the first record in the returned results.
-  - `id` (uuidv4) asset identifier.
+  - `id` (uuidv4) license identifier.
   - `software` (uuidv4) software identifier.
 - `limit` is the limit applied to trim records in the returned results.
-- `records` is the list of matching results. Each record has the structure of an asset as described in the data model.
+- `records` is the list of matching results. Each record has the structure of an license as described in the data model.
 
-Note that by default the assets in the result set are sorted by `name` (ascending).
+Note that by default the license in the result set are sorted by `name` (ascending).
 
 **POST** `/create`
 
