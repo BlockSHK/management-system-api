@@ -27,6 +27,18 @@
     "PutRequest": {
       "Item": {
         "config": {
+          "S": "mapcoin_address"
+        },
+        "value": {
+          "S": "0x3424FfB2222C88F8bD7EB0179c483623cf05a4F9"
+        }
+      }
+    }
+  },
+  {
+    "PutRequest": {
+      "Item": {
+        "config": {
           "S": "gas_price"
         },
         "value": {
