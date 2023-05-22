@@ -105,7 +105,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n        \"address\": \"0x0c81414f8545522A0C97A39F83700De8230825b6\"\n}",
+          "raw": "{}",
           "options": {
             "raw": {
               "language": "json"
@@ -113,9 +113,9 @@
           }
         },
         "url": {
-          "raw": "{{baseURI}}/Stage/activation/nonce",
+          "raw": "{{baseURI}}/Stage/query/license",
           "host": ["{{baseURI}}"],
-          "path": ["Stage", "activation", "nonce"]
+          "path": ["Stage", "query", "license"]
         }
       },
       "response": []
@@ -162,7 +162,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n        \"nonce\": \"a22c66ebd2c37678926a119b969d9f9d\",\n        \"address\": \"0x0c81414f8545522A0C97A39F83700De8230825b6\",\n        \"contract\":\"0x26daFAC779d8434CD339682d3550e4815c98AB4D\",\n        \"tokenId\":\"1\",\n        \"sign\":\"0x4bb333ca5d9336c00a02841672c9d15c1573a99b60d3f82580a6e25d44d4da214d933c1f807ae9b8c47d173f4c428bc29a3bbd015b09151c81c7e2eae51ac4e81c\"\n\n}",
+          "raw": "{\n        \"nonce\": \"7e691ac9be0f21a793a9cb9f9f402f98\",\n        \"address\": \"0x0c81414f8545522A0C97A39F83700De8230825b6\",\n        \"contract\":\"0x26daFAC779d8434CD339682d3550e4815c98AB4D\",\n        \"tokenId\":\"1\",\n        \"sign\":\"0x7aff0eb15605373d79962a0e92547a6a6bde244bc923bb8a615fa42111935431178c8b61e6a4885e53915d944e732b5e4509bfd57fc7bcd82b4564568b0d33571c\"\n\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -178,7 +178,7 @@
       "response": []
     },
     {
-      "name": "Create License",
+      "name": "Create Fixed Subscription License",
       "request": {
         "auth": {
           "type": "awsv4",
@@ -219,7 +219,121 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n        \"id\": \"30d069d1-26be-47cb-8ea8-9df3fb602c92\",\n        \"software\": \"c2186403-5a6a-4fb7-90a6-543d7bba7784\",\n        \"type\": \"CONTRACT\",\n        \"name\": \"Microsoft Office - Premimum\",\n        \"description\": \"Premimum package for the microsoft office 2003. License valid\",\n        \"image\": \"https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg\",\n        \"status\": \"ACTIVE\",\n        \"company\": \"Google\",\n        \"price\": \"10000000000000000\"\n}",
+          "raw": "{\n        \"company\": \"HITHRU-Microsoft\",\n        \"description\": \"Fixed Subscription package for the microsoft office 2003. License valid\",\n        \"image\": \"https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg\",\n        \"name\": \"Microsoft Office - Fixed Subscription\",\n        \"owner\": \"0x704Bc8d7952756e1aDBEE8aD8761bFe1C85CBdE6\",\n        \"price\": \"10000000000000000\",\n        \"metadata\":\"https://ipfs.io/ipfs/QmZmX5iTJc3C98dbkwrHMJsTGATduYNHCUmqpz7t4iSQpW\",\n        \"software\": \"Microsoft Office\",\n        \"status\": \"ACTIVE\",\n        \"type\": \"CONTRACT_FIXED_SUBSCRIPTION\",\n        \"subscriptionPeriod\": \"1000\"\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURI}}/Stage/create",
+          "host": ["{{baseURI}}"],
+          "path": ["Stage", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Perpetual License",
+      "request": {
+        "auth": {
+          "type": "awsv4",
+          "awsv4": [
+            {
+              "key": "accessKey",
+              "value": "{{AccessKey}}",
+              "type": "string"
+            },
+            {
+              "key": "secretKey",
+              "value": "{{SecretKey}}",
+              "type": "string"
+            },
+            {
+              "key": "sessionToken",
+              "value": "{{Session Token}}",
+              "type": "string"
+            },
+            {
+              "key": "service",
+              "value": "{{Service Name}}",
+              "type": "string"
+            },
+            {
+              "key": "region",
+              "value": "{{AWS Region}}",
+              "type": "string"
+            },
+            {
+              "key": "addAuthDataToQuery",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n        \"company\": \"HITHRU-Microsoft\",\n        \"description\": \"Perpetual License for the microsoft office 2003. License valid\",\n        \"image\": \"https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg\",\n        \"name\": \"Microsoft Office - Perpetual License\",\n        \"owner\": \"0x0358c8A0a26FCe5DC0A8acEaE760c70222E2c1db\",\n        \"price\": \"10000000000000000\",\n        \"metadata\":\"https://ipfs.io/ipfs/QmZmX5iTJc3C98dbkwrHMJsTGATduYNHCUmqpz7t4iSQpW\",\n        \"software\": \"Microsoft Office\",\n        \"status\": \"ACTIVE\",\n        \"type\": \"CONTRACT_PERPETUAL\"\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURI}}/Stage/create",
+          "host": ["{{baseURI}}"],
+          "path": ["Stage", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Auto Renew Subscricption License",
+      "request": {
+        "auth": {
+          "type": "awsv4",
+          "awsv4": [
+            {
+              "key": "accessKey",
+              "value": "{{AccessKey}}",
+              "type": "string"
+            },
+            {
+              "key": "secretKey",
+              "value": "{{SecretKey}}",
+              "type": "string"
+            },
+            {
+              "key": "sessionToken",
+              "value": "{{Session Token}}",
+              "type": "string"
+            },
+            {
+              "key": "service",
+              "value": "{{Service Name}}",
+              "type": "string"
+            },
+            {
+              "key": "region",
+              "value": "{{AWS Region}}",
+              "type": "string"
+            },
+            {
+              "key": "addAuthDataToQuery",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n        \"company\": \"HITHRU-Microsoft\",\n        \"description\": \"Auto Renew Subscription package for the microsoft office 2003. License valid\",\n        \"image\": \"https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg\",\n        \"name\": \"Microsoft Office - Auto Renew Subscription\",\n        \"owner\": \"0x0358c8A0a26FCe5DC0A8acEaE760c70222E2c1db\",\n        \"price\": \"10000000000000000\",\n        \"metadata\":\"https://ipfs.io/ipfs/QmZmX5iTJc3C98dbkwrHMJsTGATduYNHCUmqpz7t4iSQpW\",\n        \"software\": \"Microsoft Office\",\n        \"status\": \"ACTIVE\",\n        \"type\": \"CONTRACT_AUTO_RENEW_SUBSCRIPTION\",\n        \"subscriptionPeriod\": \"1000\",\n        \"paymentToken\": \"0x3424FfB2222C88F8bD7EB0179c483623cf05a4F9\"\n    }",
           "options": {
             "raw": {
               "language": "json"
@@ -276,7 +390,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n        \"id\": \"30d069d1-26be-47cb-8ea8-9df3fb602c92\",\n        \"software\": \"c2186403-5a6a-4fb7-90a6-543d7bba7784\",\n        \"type\": \"CONTRACT\",\n        \"name\": \"Microsoft Office - Premimum\",\n        \"description\": \"Premimum package for the microsoft office 2003. License valid\",\n        \"image\": \"https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg\",\n        \"status\": \"ACTIVE\",\n        \"company\": \"Google\",\n        \"price\": \"10000000000000000\",\n        \"owner\": \"0xAa62006DcB8Ea5e90Ec241FA33768aa8c4887a34\",\n        \"contract\": {\n            \"name\": \"PerpetualLicense\",\n            \"blockchain\": \"ETHEREUM\",\n            \"type\": \"PERPETUAL\",\n            \"royalty\": \"0.01\"\n        }\n}",
+          "raw": "{\n        \"id\": \"53f922c0-98a6-4e9b-8bd9-a2d6b4968c16\",\n        \"company\": \"HITHRU-Microsoft\",\n        \"description\": \"Fixed Subscription package for the microsoft office 2003. License valid\",\n        \"image\": \"https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg\",\n        \"name\": \"Microsoft Office - Fixed Subscription\",\n        \"owner\": \"0x704Bc8d7952756e1aDBEE8aD8761bFe1C85CBdE6\",\n        \"price\": \"10000000000000000\",\n        \"metadata\": \"https://ipfs.io/ipfs/QmZmX5iTJc3C98dbkwrHMJsTGATduYNHCUmqpz7t4iSQpW\",\n        \"software\": \"Microsoft Office\",\n        \"status\": \"ACTIVE\",\n        \"type\": \"CONTRACT_FIXED_SUBSCRIPTION\",\n        \"subscriptionPeriod\": \"1000\",\n        \"contract\": {\n            \"blockchain\": \"ETHEREUM\"\n        }\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -290,7 +404,7 @@
           "variable": [
             {
               "key": "id",
-              "value": "30d069d1-26be-47cb-8ea8-9df3fb602c92"
+              "value": "53f922c0-98a6-4e9b-8bd9-a2d6b4968c16"
             }
           ]
         }
