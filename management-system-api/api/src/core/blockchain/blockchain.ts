@@ -214,7 +214,7 @@ export class BlockChain {
   }
 
   public async validateSig(address: string, signature: string, nonce: string) {
-    const hash = this.web3.utils.sha3(nonce);
+    const hash = nonce;
     const signing_address = this.web3.eth.accounts.recover(hash!, signature);
     console.log(signing_address);
     return signing_address.toLowerCase() === address.toLowerCase();
