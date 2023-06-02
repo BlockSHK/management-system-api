@@ -356,7 +356,7 @@ export class BlockChain {
     tokenId: string
   ): Promise<string> {
     const abi = (
-      await util.getContract("PerpetualLicense", ContractFileType.ABI)
+      await util.getContract("FixedSubscription", ContractFileType.ABI)
     ).toString();
     const contract = new this.web3.eth.Contract(
       JSON.parse(abi),
@@ -367,5 +367,19 @@ export class BlockChain {
   public getweb3() {
     console.log(this.web3.givenProvider);
     return this.web3;
+  }
+
+  public async getTokenExpireTime(
+    contractAddress: string,
+    tokenId: string
+  ): Promise<string> {
+    const abi = (
+      await util.getContract("FixedSubscription", ContractFileType.ABI)
+    ).toString();
+    const contract = new this.web3.eth.Contract(
+      JSON.parse(abi),
+      contractAddress
+    );
+    return await contract.methods.getExpirationTime(tokenId).call();
   }
 }

@@ -276,8 +276,13 @@ Response
 {
     "activate": "true",
     "credential": {
-
+        "expireTime": "1687343544"
     },
     "timestamp": 1640325832000
 }
 ```
+
+- `actvate` return the success of activation request.
+- `credential` return the details associated with the license.
+  - `expireTime` (epoch) expiration time.
+- `timestamp` timestamp of the response generated can use for security.
