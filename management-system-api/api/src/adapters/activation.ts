@@ -90,13 +90,16 @@ export namespace ActivationAdapter {
       }
       const blockchain = BlockChain.connect(Blockchain.ETHEREUM);
       const owner = await blockchain.getTokenOwner(req.contract, req.tokenId);
-
+      const expireTime = await blockchain.getTokenExpireTime(
+        req.contract,
+        req.tokenId
+      );
       timestamp = Date.now();
 
       let response = {
         activate: "false",
         timestamp: timestamp,
-        credential: "",
+        credential: { expireTime: expireTime },
       };
 
       if (owner.toLowerCase() == req.address.toLowerCase()) {
