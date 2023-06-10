@@ -184,43 +184,6 @@ Response
 }
 ```
 
-**POST** `/purchase/{id}`
-
-Request
-
-```
-{
-        "address": "0x0c81414f8545522A0C97A39F83700De8230825b6"
-}
-```
-
-Response
-
-```
-{
-    "status": "OK",
-    "payload": {
-        "id": "db040c31-8694-4d37-aab4-75c26326e954",
-        "company": "Google",
-        "contract": {
-            "address": "0x26daFAC779d8434CD339682d3550e4815c98AB4D",
-            "blockchain": "ETHEREUM",
-            "name": "PerpetualLicense",
-            "royalty": "0.01",
-            "type": "PERPETUAL"
-        },
-        "description": "Premimum package for the microsoft office 2003. License valid",
-        "image": "https://www.nichemarket.co.za/admin/Content/images/metaDisplayImages/google-logo-805x452.jpg",
-        "name": "Microsoft Office - Premimum",
-        "owner": "0x0c81414f8545522A0C97A39F83700De8230825b6",
-        "price": "10000000000000000",
-        "software": "c2186403-5a6a-4fb7-90a6-543d7bba7784",
-        "status": "ACTIVE",
-        "type": "TOKEN_PERPETUAL"
-    }
-}
-```
-
 ## Activation
 
 The activation process of the license happened using these two endpoints.
